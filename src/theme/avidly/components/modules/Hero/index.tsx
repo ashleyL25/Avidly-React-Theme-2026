@@ -112,7 +112,6 @@ export function Component({ fieldValues }) {
 
 export const fields = (
   <ModuleFields>
-    {/* Content Settings */}
     <RichTextField
       name="heading"
       label="Hero Heading"
@@ -121,19 +120,14 @@ export const fields = (
     <RichTextField
       name="description"
       label="Hero Description"
-      default="<p>We transform businesses of most major sector powerful and adaptable digital solutions that satisfy Provide a brief overview of your SaaS product, explaining what it does and how it can benefit.</p>"
+      default="<p>We transform businesses of most major sectors with powerful and adaptable digital solutions</p>"
     />
     <ImageField
       name="heroImage"
       label="Hero Main Image"
-      default={{ 
-        src: 'https://bluefrogdev-4911237.hs-sites.com/hubfs/yosemite-national-park.jpg', 
-        alt: 'Hero Image' 
-      }}
+      default={{ src: 'https://bluefrogdev-4911237.hs-sites.com/hubfs/yosemite-national-park.jpg', alt: 'Hero Image' }}
       resizable={true}
     />
-
-    {/* Customer Count Section */}
     <BooleanField
       name="showCustomerCount"
       label="Show Customer Count Section"
@@ -142,18 +136,12 @@ export const fields = (
     <ImageField
       name="customerImage1"
       label="Customer Image 1"
-      default={{ 
-        src: 'https://bluefrogdev-4911237.hs-sites.com/hubfs/yosemite-national-park.jpg', 
-        alt: 'Customer' 
-      }}
+      default={{ src: 'https://bluefrogdev-4911237.hs-sites.com/hubfs/yosemite-national-park.jpg', alt: 'Customer' }}
     />
     <ImageField
       name="customerImage2"
       label="Customer Image 2"
-      default={{ 
-        src: 'https://bluefrogdev-4911237.hs-sites.com/hubfs/yosemite-national-park.jpg', 
-        alt: 'Customer' 
-      }}
+      default={{ src: 'https://bluefrogdev-4911237.hs-sites.com/hubfs/yosemite-national-park.jpg', alt: 'Customer' }}
     />
     <NumberField
       name="customerCount"
@@ -172,7 +160,7 @@ export const fields = (
       default="More than 10k+ <br /> trusted customers"
     />
 
-    {/* Style Settings */}
+    {/* Style Options */}
     <ChoiceField
       name="backgroundOption"
       label="Background Option"
@@ -181,59 +169,58 @@ export const fields = (
         ['color', 'Solid Color'],
         ['image', 'Background Image'],
       ]}
+      display="select"
     />
-
     <ColorField
       name="backgroundColor"
       label="Background Color"
-      default={{
-        color: '#0f172a',
-        opacity: 100
+      default={{ color: '#0f172a', opacity: 100 }}
+      visibility={{
+        controlling_field_path: 'backgroundOption',
+        controlling_value_regex: 'color',
       }}
     />
-
     <ImageField
       name="backgroundImage"
       label="Background Image"
-      default={{ 
-        src: 'https://4911237.fs1.hubspotusercontent-na1.net/hubfs/4911237/united-language-group-heading%20(1).jpg', 
-        alt: 'Background' 
+      default={{ src: 'https://4911237.fs1.hubspotusercontent-na1.net/hubfs/4911237/united-language-group-heading%20(1).jpg', alt: 'Background' }}
+      visibility={{
+        controlling_field_path: 'backgroundOption',
+        controlling_value_regex: 'image',
       }}
     />
-
     <NumberField
       name="paddingTop"
       label="Section Padding Top (px)"
       default={100}
       min={0}
-      max={300}
+      max={200}
       step={10}
     />
-
     <NumberField
       name="paddingBottom"
       label="Section Padding Bottom (px)"
       default={100}
       min={0}
-      max={300}
+      max={200}
       step={10}
     />
 
-    {/* Animation Settings */}
-    <BooleanField 
-      name="animationEnabled" 
-      label="Enable Animations" 
+    {/* Animation Options */}
+    <BooleanField
+      name="animationEnabled"
+      label="Enable Animations"
       default={true}
-      help_text="Enable scroll-triggered GSAP animations for hero content"
+      help_text="Enable GSAP scroll-triggered animations"
     />
     <NumberField
       name="animationDelay"
-      label="Animation Delay"
+      label="Animation Delay (seconds)"
       default={0}
       min={0}
       max={2}
       step={0.1}
-      help_text="Delay before animation starts (seconds)"
+      help_text="Delay before animations start"
     />
   </ModuleFields>
 );
@@ -241,5 +228,4 @@ export const fields = (
 export const meta = {
   label: 'Hero Section',
   icon: 'star',
-  categories: ['hero'],
 };
