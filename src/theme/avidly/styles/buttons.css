@@ -1,0 +1,166 @@
+/* ===============================================
+   Button Styles with Animated Hover Effects
+   =============================================== */
+
+/* Base Button Styles */
+.btn {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 32px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 350ms ease;
+  text-decoration: none;
+  border: 2px solid transparent;
+  cursor: pointer;
+  font-family: var(--Font-Primary, 'Inter', sans-serif);
+}
+
+/* Double Span Hover Animation */
+.btn > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 350ms ease, opacity 350ms ease;
+}
+
+.btn > span:first-child {
+  position: relative;
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.btn > span:last-child {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateY(100%);
+  opacity: 0;
+}
+
+.btn:hover > span:first-child {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.btn:hover > span:last-child {
+  transform: translate(-50%, -50%) translateY(0);
+  opacity: 1;
+}
+
+/* Button Color Variants */
+.btn-primary {
+  background-color: var(--Primary, #6366f1);
+  border-color: var(--Primary, #6366f1);
+  color: var(--White, #ffffff);
+}
+
+.btn-primary:hover {
+  background-color: var(--Secondary, #f59e0b);
+  border-color: var(--Secondary, #f59e0b);
+  color: var(--White, #ffffff);
+  box-shadow: 0 4px 20px rgba(243, 158, 11, 0.4);
+}
+
+.btn-secondary {
+  background-color: var(--Secondary, #f59e0b);
+  border-color: var(--Secondary, #f59e0b);
+  color: var(--White, #ffffff);
+}
+
+.btn-secondary:hover {
+  background-color: var(--Primary, #6366f1);
+  border-color: var(--Primary, #6366f1);
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
+}
+
+.btn-light {
+  background-color: var(--White, #ffffff);
+  color: var(--Primary, #6366f1);
+  border-color: var(--White, #ffffff);
+}
+
+.btn-light:hover {
+  background-color: var(--Primary, #6366f1);
+  color: var(--White, #ffffff);
+  border-color: var(--Primary, #6366f1);
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+}
+
+.btn-dark {
+  background-color: var(--Background, #0f172a);
+  color: var(--White, #ffffff);
+  border-color: var(--Background, #0f172a);
+}
+
+.btn-dark:hover {
+  background-color: var(--Primary, #6366f1);
+  border-color: var(--Primary, #6366f1);
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+}
+
+.btn-outline-primary {
+  background-color: transparent;
+  color: var(--Primary, #6366f1);
+  border-color: var(--Primary, #6366f1);
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--Primary, #6366f1);
+  color: var(--White, #ffffff);
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+}
+
+.btn-outline-light {
+  background-color: transparent;
+  color: var(--White, #ffffff);
+  border-color: var(--White, #ffffff);
+}
+
+.btn-outline-light:hover {
+  background-color: var(--White, #ffffff);
+  color: var(--Primary, #6366f1);
+}
+
+/* Button Sizes */
+.btn-sm {
+  padding: 10px 24px;
+  font-size: 14px;
+  border-radius: 6px;
+}
+
+.btn-md {
+  padding: 14px 32px;
+  font-size: 16px;
+  border-radius: 8px;
+}
+
+.btn-lg {
+  padding: 18px 40px;
+  font-size: 18px;
+  border-radius: 10px;
+}
+
+/* Icon Styles */
+.btn i {
+  font-size: 1.2em;
+  line-height: 1;
+}
+
+/* Focus States for Accessibility */
+.btn:focus {
+  outline: 2px solid var(--Primary, #6366f1);
+  outline-offset: 2px;
+}
+
+/* Disabled State */
+.btn:disabled,
+.btn.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+

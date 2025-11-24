@@ -1,0 +1,39 @@
+- Uploading startix-hubspot-react-theme project files to blue-frog-development [standard] (4911237)
+- Uploaded startix-hubspot-react-theme project files to blue-frog-development [standard] (4911237)
+
+View build #3 in HubSpot: https://app.hubspot.com/developer-projects/4911237/project/startix-hubspot-react-theme/activity/build/3
+
+- Uploaded startix-hubspot-react-theme project files to blue-frog-development [standard] (4911237)
+- Beginning
+- Uploaded startix-hubspot-react-theme project files to blue-frog-development [standard] (4911237)
+- Building startix-hubspot-react-theme #3
+Found 1 component in this project
+
+- Uploaded startix-hubspot-react-theme project files to blue-frog-development [standard] (4911237)
+- Building startix-hubspot-react-theme #3
+Found 1 component in this project
+
+- Building theme  ...
+
+- Uploaded startix-hubspot-react-theme project files to blue-frog-development [standard] (4911237)
+- Building startix-hubspot-react-theme #3
+Found 1 component in this project
+
+- Building theme  ... FAILED
+
+- Uploaded startix-hubspot-react-theme project files to blue-frog-development [standard] (4911237)
+- Failed to build startix-hubspot-react-theme #3
+- Building theme  ... FAILED
+
+--------------------------------------------------
+Build #theme failed because there was a problem
+building 3
+
+See below for a summary of errors.
+--------------------------------------------------
+
+--- theme failed with the following error ---
+[ERROR] There were errors building this component:
+ - An error occurred while building project: startix-hubspot-react-theme.
+Error: Error building JS Project with error message `cms-js-build failed` and cause `Build failure [cms-js-build]`. Check your react build logs for more information.
+--------------------------------------------------

@@ -1,0 +1,23 @@
+{
+  "name": "avidly-react-theme-2026",
+  "version": "1.0.0",
+  "description": "Avidly React Theme 2026 - HubSpot CMS React theme with islands architecture",
+  "scripts": {
+    "start": "hs-cms-dev-server .",
+    "deploy": "hs project upload"
+  },
+  "type": "module",
+  "keywords": ["hubspot", "cms", "react", "theme", "avidly", "2026", "islands"],
+  "dependencies": {
+    "@hubspot/cms-components": "latest",
+    "@iconify/react": "^4.1.1",
+    "gsap": "^3.12.5",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-countup": "^6.5.3",
+    "swiper": "^12.0.2"
+  },
+  "devDependencies": {
+    "@hubspot/cms-dev-server": "latest"
+  }
+}

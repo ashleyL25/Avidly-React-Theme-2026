@@ -1,0 +1,51 @@
+[
+  {
+    "type": "Color",
+    "name": "primary_color",
+    "label": "Primary Color",
+    "default": {
+      "color": "#6366f1",
+      "opacity": 100
+    }
+  },
+  {
+    "type": "Color",
+    "name": "secondary_color",
+    "label": "Secondary Color",
+    "default": {
+      "color": "#f59e0b",
+      "opacity": 100
+    }
+  },
+  {
+    "type": "Color",
+    "name": "dark_bg_color",
+    "label": "Dark Background Color",
+    "default": {
+      "color": "#0f172a",
+      "opacity": 100
+    }
+  },
+  {
+    "type": "Font",
+    "name": "primary_font",
+    "label": "Primary Font (Body)",
+    "default": {
+      "font": "Inter",
+      "font_set": "GOOGLE",
+      "size": 16,
+      "size_unit": "px"
+    }
+  },
+  {
+    "type": "Font",
+    "name": "heading_font",
+    "label": "Heading Font",
+    "default": {
+      "font": "Poppins",
+      "font_set": "GOOGLE",
+      "size": 32,
+      "size_unit": "px"
+    }
+  }
+]

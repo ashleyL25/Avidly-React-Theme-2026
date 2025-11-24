@@ -1,0 +1,21 @@
+{
+  "name": "avidly-react-theme-2026",
+  "description": "Avidly React Theme 2026 for HubSpot CMS React",
+  "version": "1.0.0",
+  "devDependencies": {
+    "@hubspot/prettier-plugin-hubl": "latest",
+    "eslint": "^8.24.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-react": "^7.31.10",
+    "prettier": "^2.7.1"
+  },
+  "scripts": {
+    "start": "cd src/theme/avidly && npm start",
+    "prettier": "prettier . --check",
+    "deploy": "hs project upload",
+    "upload": "hs project upload"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

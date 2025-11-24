@@ -1,0 +1,58 @@
+<!--
+  templateType: none
+-->
+<!DOCTYPE html>
+<html lang="{{ html_lang }}" {{ html_lang_dir }}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% if page_meta.html_title or pageTitle %}
+      <title>{{ page_meta.html_title or pageTitle }}</title>
+    {% endif %}
+    {% if brand_settings.primaryFavicon.src %}
+      <link rel="shortcut icon" href="{{ brand_settings.primaryFavicon.src }}" />
+    {% endif %}
+    <meta name="description" content="{{ page_meta.meta_description }}" />
+    
+        {# Main Theme Stylesheet #}
+        {{ require_css(get_asset_url('../../styles/main.css')) }}
+        {{ require_css(get_asset_url('../../styles/buttons.css')) }}
+    
+    {# Bootstrap CSS #}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    {# Tabler Icons #}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+    
+    {# CSS Variables for Theme Customization #}
+    <style>
+      :root {
+        --primary-color: {{ theme.primary_color.color or '#6366f1' }};
+        --secondary-color: {{ theme.secondary_color.color or '#f59e0b' }};
+        --dark-bg-color: {{ theme.dark_bg_color.color or '#0f172a' }};
+        --primary-font: {{ theme.primary_font.font or 'Inter, sans-serif' }};
+        --heading-font: {{ theme.heading_font.font or 'Inter, sans-serif' }};
+      }
+    </style>
+    
+    {# To see a full list of what is included via standard_header_includes please reference: https://developers.hubspot.com/docs/cms/hubl/variables#required-page-template-variables #}
+    {{ standard_header_includes }}
+  </head>
+  <body class="{{ builtin_body_classes }}">
+    {% include "../svg-icons.hubl.html" %}
+    
+    {# GSAP Animation Provider - handles all scroll animations #}
+    {% module "animation_provider" path="../../components/modules/AnimationProvider" %}
+    
+    <div class="body-wrapper">
+      {% block body %}
+      {% endblock body %}
+    </div>
+    
+    {# Bootstrap JS #}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+        {# To see a full list of what is included via standard_footer_includes please reference: https://developers.hubspot.com/docs/cms/hubl/variables#required-page-template-variables #}
+        {{ standard_footer_includes }}
+      </body>
+    </html>
