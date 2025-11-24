@@ -1,0 +1,330 @@
+{# 
+  Shared Field Macros for Avidly React Theme 2026
+  
+  These macros provide reusable field groups that match the RK - Expertise Banner structure.
+  Import this file in your modules to use the macros:
+  
+  {% import "/macros/field-groups.hubl.html" as fields %}
+  {{ fields.heading_group("heading", "Section Heading", "Your Heading Here", "white") }}
+#}
+
+{#
+  HEADING GROUP MACRO
+  
+  Provides: text, HTML size, display size, color presets, custom color, animation type, animation delay
+  
+  Usage:
+  {{ heading_group("heading", "Main Heading", "Default Heading Text", "white") }}
+  
+  Parameters:
+  - name: Field name (e.g., "heading")
+  - label: Field label shown in editor (e.g., "Main Heading")
+  - default_text: Default heading text
+  - default_color: Default color preset (auto/primary/secondary/tertiary/quaternary/white/black)
+#}
+{% macro heading_group(name="heading", label="Heading", default_text="Your Heading Here", default_color="auto", default_size="2") %}
+  <div class="field-group">
+    <label>{{ label }}</label>
+    
+    {# Heading Text #}
+    <input type="text" 
+           name="{{ name }}.text" 
+           value="{{ default_text }}"
+           label="Heading Text" />
+    
+    {# HTML Size (H1-H6) #}
+    <select name="{{ name }}.size" 
+            label="HTML Size"
+            help-text="Semantic heading level for SEO"
+            default="{{ default_size }}">
+      <option value="1">H1</option>
+      <option value="2">H2</option>
+      <option value="3">H3</option>
+      <option value="4">H4</option>
+      <option value="5">H5</option>
+      <option value="6">H6</option>
+    </select>
+    
+    {# Display Size #}
+    <select name="{{ name }}.display_size" 
+            label="Display Size"
+            help-text="Visual size (can differ from HTML size)"
+            default="auto">
+      <option value="auto">Auto</option>
+      <option value="1">H1</option>
+      <option value="2">H2</option>
+      <option value="3">H3</option>
+      <option value="4">H4</option>
+      <option value="5">H5</option>
+      <option value="6">H6</option>
+    </select>
+    
+    {# Color Presets #}
+    <select name="{{ name }}.color" 
+            label="Color"
+            default="{{ default_color }}">
+      <option value="auto">Auto</option>
+      <option value="primary">Primary</option>
+      <option value="secondary">Secondary</option>
+      <option value="tertiary">Tertiary</option>
+      <option value="quaternary">Quaternary</option>
+      <option value="white">White</option>
+      <option value="black">Black</option>
+      <option value="custom">Custom</option>
+    </select>
+    
+    {# Custom Color Picker #}
+    <color-picker name="{{ name }}.custom_color" 
+                  label="Custom Color"
+                  default="#000000"
+                  show-if="{{ name }}.color == 'custom'" />
+    
+    {# Animation Type #}
+    <select name="{{ name }}.animation_type" 
+            label="Animation Type"
+            help-text="GSAP animation on scroll"
+            default="fadeInUp">
+      <option value="none">None</option>
+      <option value="fadeIn">Fade In</option>
+      <option value="fadeInUp">Fade In Up</option>
+      <option value="fadeInDown">Fade In Down</option>
+      <option value="fadeInLeft">Fade In Left</option>
+      <option value="fadeInRight">Fade In Right</option>
+      <option value="zoomIn">Zoom In</option>
+    </select>
+    
+    {# Animation Delay #}
+    <select name="{{ name }}.animation_delay" 
+            label="Animation Delay"
+            default="0">
+      <option value="0">No Delay</option>
+      <option value="0.1">0.1s</option>
+      <option value="0.2">0.2s</option>
+      <option value="0.3">0.3s</option>
+      <option value="0.5">0.5s</option>
+      <option value="0.7">0.7s</option>
+      <option value="1">1s</option>
+    </select>
+  </div>
+{% endmacro %}
+
+{#
+  STYLE GROUP MACRO
+  
+  Provides: container width, responsive spacing, background options, custom CSS/ID
+  
+  Usage:
+  {{ style_group("style", "Style Settings") }}
+  
+  Parameters:
+  - name: Field name (e.g., "style")
+  - label: Field label shown in editor (e.g., "Style Settings")
+#}
+{% macro style_group(name="style", label="Style") %}
+  <div class="field-group">
+    <label>{{ label }}</label>
+    
+    {# Container Width #}
+    <select name="{{ name }}.container_width" 
+            label="Container Width"
+            default="container">
+      <option value="container">Container (Boxed)</option>
+      <option value="container-fluid">Full Width</option>
+      <option value="custom">Custom Width</option>
+    </select>
+    
+    {# Custom Container Width #}
+    <number name="{{ name }}.custom_container_width" 
+            label="Custom Width"
+            default="1120"
+            min="320"
+            max="1920"
+            step="10"
+            suffix="px"
+            show-if="{{ name }}.container_width == 'custom'" />
+    
+    {# Padding Top #}
+    <number name="{{ name }}.padding_top" 
+            label="Padding Top (px)"
+            default="80"
+            min="0"
+            max="300"
+            step="10" />
+    
+    {# Padding Bottom #}
+    <number name="{{ name }}.padding_bottom" 
+            label="Padding Bottom (px)"
+            default="80"
+            min="0"
+            max="300"
+            step="10" />
+    
+    {# Background Option #}
+    <select name="{{ name }}.background_option" 
+            label="Background Option"
+            default="color">
+      <option value="image">Background Image</option>
+      <option value="color">Solid Color</option>
+      <option value="gradient">Gradient</option>
+      <option value="none">None</option>
+    </select>
+    
+    {# Background Image #}
+    <image name="{{ name }}.background_image" 
+           label="Background Image"
+           default="https://4911237.fs1.hubspotusercontent-na1.net/hubfs/4911237/united-language-group-heading%20(1).jpg"
+           show-if="{{ name }}.background_option == 'image'" />
+    
+    {# Image Overlay Color #}
+    <color-picker name="{{ name }}.overlay_color" 
+                  label="Image Overlay Color"
+                  default="#000000"
+                  show-if="{{ name }}.background_option == 'image'" />
+    
+    {# Background Color #}
+    <color-picker name="{{ name }}.background_color" 
+                  label="Background Color"
+                  default="#ffffff"
+                  show-if="{{ name }}.background_option == 'color'" />
+    
+    {# Custom CSS Class #}
+    <text name="{{ name }}.custom_css_class" 
+          label="Custom CSS Class"
+          default=""
+          help-text="Add custom CSS classes (space-separated)" />
+    
+    {# Custom ID #}
+    <text name="{{ name }}.custom_id" 
+          label="Custom Element ID"
+          default=""
+          help-text="Add custom HTML ID for anchor links" />
+  </div>
+{% endmacro %}
+
+{#
+  COLOR FIELD MACRO
+  
+  Provides: Color presets with custom picker fallback
+  
+  Usage:
+  {{ color_field("text_color", "Text Color", "primary") }}
+  
+  Parameters:
+  - name: Field name (e.g., "text_color")
+  - label: Field label shown in editor
+  - default: Default color preset
+#}
+{% macro color_field(name="color", label="Color", default="primary") %}
+  <select name="{{ name }}" 
+          label="{{ label }}"
+          default="{{ default }}">
+    <option value="primary">Primary</option>
+    <option value="secondary">Secondary</option>
+    <option value="tertiary">Tertiary</option>
+    <option value="quaternary">Quaternary</option>
+    <option value="white">White</option>
+    <option value="black">Black</option>
+    <option value="custom">Custom</option>
+  </select>
+  
+  <color-picker name="{{ name }}_custom" 
+                label="Custom {{ label }}"
+                default="#000000"
+                show-if="{{ name }} == 'custom'" />
+{% endmacro %}
+
+{#
+  ANIMATION FIELD MACRO
+  
+  Provides: Animation type and delay
+  
+  Usage:
+  {{ animation_field("element_animation", "Animation", "fadeInUp") }}
+  
+  Parameters:
+  - name: Field name (e.g., "element_animation")
+  - label: Field label shown in editor
+  - default_type: Default animation type
+#}
+{% macro animation_field(name="animation", label="Animation", default_type="fadeInUp") %}
+  <div class="field-group">
+    <label>{{ label }}</label>
+    
+    <select name="{{ name }}.type" 
+            label="Animation Type"
+            default="{{ default_type }}">
+      <option value="none">None</option>
+      <option value="fadeIn">Fade In</option>
+      <option value="fadeInUp">Fade In Up</option>
+      <option value="fadeInDown">Fade In Down</option>
+      <option value="fadeInLeft">Fade In Left</option>
+      <option value="fadeInRight">Fade In Right</option>
+      <option value="zoomIn">Zoom In</option>
+    </select>
+    
+    <select name="{{ name }}.delay" 
+            label="Animation Delay"
+            default="0">
+      <option value="0">No Delay</option>
+      <option value="0.1">0.1s</option>
+      <option value="0.2">0.2s</option>
+      <option value="0.3">0.3s</option>
+      <option value="0.5">0.5s</option>
+      <option value="0.7">0.7s</option>
+      <option value="1">1s</option>
+    </select>
+  </div>
+{% endmacro %}
+
+{#
+  BUTTON FIELD MACRO
+  
+  Provides: Button text, URL, style, hover text
+  
+  Usage:
+  {{ button_field("cta_button", "Call to Action Button") }}
+  
+  Parameters:
+  - name: Field name (e.g., "cta_button")
+  - label: Field label shown in editor
+#}
+{% macro button_field(name="button", label="Button") %}
+  <div class="field-group">
+    <label>{{ label }}</label>
+    
+    <text name="{{ name }}.text" 
+          label="Button Text"
+          default="Learn More" />
+    
+    <text name="{{ name }}.url" 
+          label="Button URL"
+          default="#" />
+    
+    <select name="{{ name }}.style" 
+            label="Button Style"
+            default="primary">
+      <option value="primary">Primary</option>
+      <option value="secondary">Secondary</option>
+      <option value="white">White</option>
+      <option value="outline">Outline</option>
+    </select>
+    
+    <boolean name="{{ name }}.enable_hover_text" 
+             label="Enable Hover Text"
+             default="false" />
+    
+    <text name="{{ name }}.hover_text" 
+          label="Hover Text"
+          default="Learn More"
+          show-if="{{ name }}.enable_hover_text == true" />
+    
+    <select name="{{ name }}.size" 
+            label="Button Size"
+            default="md">
+      <option value="sm">Small</option>
+      <option value="md">Medium</option>
+      <option value="lg">Large</option>
+    </select>
+  </div>
+{% endmacro %}
+
