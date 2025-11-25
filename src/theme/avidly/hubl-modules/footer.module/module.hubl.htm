@@ -1,0 +1,129 @@
+<footer class="footer-section">
+  <div class="divider"></div>
+
+  <div class="container">
+    <div class="row g-5">
+      {# Footer Column 1 - Logo & Description #}
+      <div class="col-12 col-md-6 col-lg-5">
+        <div class="footer-card fadeInUp" data-delay="0">
+          <div class="footer-logo mb-4">
+            <a href="/">
+              <img 
+                src="{{ module.logo_group.footer_logo.src }}" 
+                alt="{{ module.logo_group.footer_logo.alt }}" 
+                width="{{ module.logo_group.footer_logo.width|default(180) }}"
+                loading="lazy"
+              />
+            </a>
+          </div>
+
+          <div class="footer-description">
+            {{ module.logo_group.footer_description }}
+          </div>
+
+          <div class="social-nav mt-4">
+            {% if module.social_group.facebook_url %}
+              <a href="{{ module.social_group.facebook_url }}" target="_blank" rel="noopener" aria-label="Facebook">
+                <i class="ti ti-brand-facebook"></i>
+              </a>
+            {% endif %}
+            {% if module.social_group.linkedin_url %}
+              <a href="{{ module.social_group.linkedin_url }}" target="_blank" rel="noopener" aria-label="LinkedIn">
+                <i class="ti ti-brand-linkedin"></i>
+              </a>
+            {% endif %}
+            {% if module.social_group.twitter_url %}
+              <a href="{{ module.social_group.twitter_url }}" target="_blank" rel="noopener" aria-label="Twitter">
+                <i class="ti ti-brand-x"></i>
+              </a>
+            {% endif %}
+            {% if module.social_group.instagram_url %}
+              <a href="{{ module.social_group.instagram_url }}" target="_blank" rel="noopener" aria-label="Instagram">
+                <i class="ti ti-brand-instagram"></i>
+              </a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+      {# Footer Column 2 - Menu 1 #}
+      <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+        <div class="footer-card fadeInUp" data-delay="0.1">
+          <h5 class="footer-heading">{{ module.menu_column_1.column_1_heading }}</h5>
+
+          <nav class="footer-nav mt-4">
+            {% if module.menu_column_1.column_1_menu %}
+              {% menu id="{{ module.menu_column_1.column_1_menu }}", flyouts='false', max_levels='1', flow='vertical' %}
+            {% else %}
+              <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/services">Services</a></li>
+                <li><a href="/contact">Contact</a></li>
+              </ul>
+            {% endif %}
+          </nav>
+        </div>
+      </div>
+
+      {# Footer Column 3 - Menu 2 #}
+      <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+        <div class="footer-card fadeInUp" data-delay="0.2">
+          <h5 class="footer-heading">{{ module.menu_column_2.column_2_heading }}</h5>
+
+          <nav class="footer-nav mt-4">
+            {% if module.menu_column_2.column_2_menu %}
+              {% menu id="{{ module.menu_column_2.column_2_menu }}", flyouts='false', max_levels='1', flow='vertical' %}
+            {% else %}
+              <ul>
+                <li><a href="/projects">Projects</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/team">Our Team</a></li>
+                <li><a href="/pricing">Pricing</a></li>
+              </ul>
+            {% endif %}
+          </nav>
+        </div>
+      </div>
+
+      {# Footer Column 4 - Menu 3 #}
+      <div class="col-12 col-sm-6 col-md-3 col-lg-3">
+        <div class="footer-card fadeInUp" data-delay="0.3">
+          <h5 class="footer-heading">{{ module.menu_column_3.column_3_heading }}</h5>
+
+          <nav class="footer-nav mt-4">
+            {% if module.menu_column_3.column_3_menu %}
+              {% menu id="{{ module.menu_column_3.column_3_menu }}", flyouts='false', max_levels='1', flow='vertical' %}
+            {% else %}
+              <ul>
+                <li><a href="/process">Working Process</a></li>
+                <li><a href="/privacy">Privacy Policy</a></li>
+                <li><a href="/terms">Terms & Conditions</a></li>
+                <li><a href="/faq">FAQs</a></li>
+              </ul>
+            {% endif %}
+          </nav>
+        </div>
+      </div>
+    </div>
+
+    {# Copyright Section #}
+    <div class="copyright-section mt-5">
+      <div class="row align-items-center">
+        <div class="col-12 col-md-6">
+          <div class="copyright">
+            {{ module.copyright_group.copyright_text|replace('{year}', year|string) }}
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="footer-legal text-md-end">
+            {{ module.copyright_group.legal_links }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider mt-5"></div>
+</footer>
+

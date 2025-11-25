@@ -1,0 +1,8 @@
+{
+  "label": "Avidly Footer",
+  "host_template_types": ["PAGE"],
+  "icon": "layout",
+  "is_available_for_new_content": false,
+  "smart_type": "NOT_SMART"
+}
+

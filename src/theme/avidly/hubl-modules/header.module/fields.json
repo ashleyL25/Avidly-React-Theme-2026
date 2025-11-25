@@ -1,0 +1,227 @@
+[
+  {
+    "id": "top_bar_group",
+    "name": "top_bar_group",
+    "label": "Top Bar",
+    "type": "group",
+    "children": [
+      {
+        "id": "show_top_bar",
+        "name": "show_top_bar",
+        "label": "Show Top Bar",
+        "type": "boolean",
+        "default": true,
+        "help_text": "Toggle the top contact information bar on/off"
+      },
+      {
+        "id": "top_bar_email",
+        "name": "top_bar_email",
+        "label": "Email Address",
+        "type": "text",
+        "default": "info@example.com",
+        "visibility": {
+          "controlling_field": "show_top_bar",
+          "controlling_value_regex": "true"
+        }
+      },
+      {
+        "id": "top_bar_phone",
+        "name": "top_bar_phone",
+        "label": "Phone Number",
+        "type": "text",
+        "default": "(888) 123.456.7894",
+        "visibility": {
+          "controlling_field": "show_top_bar",
+          "controlling_value_regex": "true"
+        }
+      },
+      {
+        "id": "show_top_bar_social",
+        "name": "show_top_bar_social",
+        "label": "Show Social Links in Top Bar",
+        "type": "boolean",
+        "default": true,
+        "visibility": {
+          "controlling_field": "show_top_bar",
+          "controlling_value_regex": "true"
+        }
+      }
+    ],
+    "default": {
+      "show_top_bar": true,
+      "top_bar_email": "info@example.com",
+      "top_bar_phone": "(888) 123.456.7894",
+      "show_top_bar_social": true
+    }
+  },
+  {
+    "id": "logo_group",
+    "name": "logo_group",
+    "label": "Logo",
+    "type": "group",
+    "children": [
+      {
+        "id": "logo_image",
+        "name": "logo_image",
+        "label": "Logo Image",
+        "type": "image",
+        "default": {
+          "src": "https://bluefrogdev-4911237.hs-sites.com/hubfs/yosemite-national-park.jpg",
+          "alt": "Avidly",
+          "width": 180
+        },
+        "resizable": true
+      },
+      {
+        "id": "mobile_logo_image",
+        "name": "mobile_logo_image",
+        "label": "Mobile Logo Image",
+        "type": "image",
+        "default": {
+          "src": "https://bluefrogdev-4911237.hs-sites.com/hubfs/yosemite-national-park.jpg",
+          "alt": "Avidly",
+          "width": 160
+        },
+        "resizable": true,
+        "help_text": "Optional separate logo for mobile menu"
+      }
+    ],
+    "default": {
+      "logo_image": {
+        "src": "https://bluefrogdev-4911237.hs-sites.com/hubfs/yosemite-national-park.jpg",
+        "alt": "Avidly",
+        "width": 180
+      },
+      "mobile_logo_image": {
+        "src": "https://bluefrogdev-4911237.hs-sites.com/hubfs/yosemite-national-park.jpg",
+        "alt": "Avidly",
+        "width": 160
+      }
+    }
+  },
+  {
+    "id": "navigation_group",
+    "name": "navigation_group",
+    "label": "Navigation",
+    "type": "group",
+    "children": [
+      {
+        "id": "primary_menu",
+        "name": "primary_menu",
+        "label": "Primary Menu (Desktop)",
+        "type": "menu",
+        "default": null,
+        "help_text": "Select which menu to display in the main navigation"
+      },
+      {
+        "id": "mobile_menu",
+        "name": "mobile_menu",
+        "label": "Mobile Menu",
+        "type": "menu",
+        "default": null,
+        "help_text": "Select which menu to display in mobile navigation (leave empty to use same as primary)"
+      }
+    ],
+    "default": {
+      "primary_menu": null,
+      "mobile_menu": null
+    }
+  },
+  {
+    "id": "cta_group",
+    "name": "cta_group",
+    "label": "Call-to-Action Button",
+    "type": "group",
+    "children": [
+      {
+        "id": "show_cta",
+        "name": "show_cta",
+        "label": "Show CTA Button",
+        "type": "boolean",
+        "default": true
+      },
+      {
+        "id": "cta_text",
+        "name": "cta_text",
+        "label": "CTA Button Text",
+        "type": "text",
+        "default": "Get Started",
+        "visibility": {
+          "controlling_field": "show_cta",
+          "controlling_value_regex": "true"
+        }
+      },
+      {
+        "id": "cta_url",
+        "name": "cta_url",
+        "label": "CTA Button URL",
+        "type": "text",
+        "default": "/contact",
+        "visibility": {
+          "controlling_field": "show_cta",
+          "controlling_value_regex": "true"
+        }
+      },
+      {
+        "id": "cta_open_in_new_tab",
+        "name": "cta_open_in_new_tab",
+        "label": "Open in New Tab",
+        "type": "boolean",
+        "default": false,
+        "visibility": {
+          "controlling_field": "show_cta",
+          "controlling_value_regex": "true"
+        }
+      }
+    ],
+    "default": {
+      "show_cta": true,
+      "cta_text": "Get Started",
+      "cta_url": "/contact",
+      "cta_open_in_new_tab": false
+    }
+  },
+  {
+    "id": "social_group",
+    "name": "social_group",
+    "label": "Social Links",
+    "type": "group",
+    "children": [
+      {
+        "id": "facebook_url",
+        "name": "facebook_url",
+        "label": "Facebook URL",
+        "type": "text",
+        "default": ""
+      },
+      {
+        "id": "twitter_url",
+        "name": "twitter_url",
+        "label": "Twitter/X URL",
+        "type": "text",
+        "default": ""
+      },
+      {
+        "id": "linkedin_url",
+        "name": "linkedin_url",
+        "label": "LinkedIn URL",
+        "type": "text",
+        "default": ""
+      },
+      {
+        "id": "instagram_url",
+        "name": "instagram_url",
+        "label": "Instagram URL",
+        "type": "text",
+        "default": ""
+      }
+    ],
+    "default": {
+      "facebook_url": "",
+      "twitter_url": "",
+      "linkedin_url": "",
+      "instagram_url": ""
+    }
+  }
+]
+

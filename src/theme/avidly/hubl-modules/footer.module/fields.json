@@ -1,0 +1,188 @@
+[
+  {
+    "id": "logo_group",
+    "name": "logo_group",
+    "label": "Logo & Description",
+    "type": "group",
+    "children": [
+      {
+        "id": "footer_logo",
+        "name": "footer_logo",
+        "label": "Footer Logo",
+        "type": "image",
+        "default": {
+          "src": "https://bluefrogdev-4911237.hs-sites.com/hubfs/yosemite-national-park.jpg",
+          "alt": "Avidly",
+          "width": 180
+        },
+        "resizable": true
+      },
+      {
+        "id": "footer_description",
+        "name": "footer_description",
+        "label": "Footer Description",
+        "type": "richtext",
+        "default": "<p>We transform businesses of most major sectors with powerful and adaptable digital solutions that satisfy the needs of modern enterprises.</p>"
+      }
+    ],
+    "default": {
+      "footer_logo": {
+        "src": "https://bluefrogdev-4911237.hs-sites.com/hubfs/yosemite-national-park.jpg",
+        "alt": "Avidly",
+        "width": 180
+      },
+      "footer_description": "<p>We transform businesses of most major sectors with powerful and adaptable digital solutions that satisfy the needs of modern enterprises.</p>"
+    }
+  },
+  {
+    "id": "menu_column_1",
+    "name": "menu_column_1",
+    "label": "Menu Column 1",
+    "type": "group",
+    "children": [
+      {
+        "id": "column_1_heading",
+        "name": "column_1_heading",
+        "label": "Column 1 Heading",
+        "type": "text",
+        "default": "Pages"
+      },
+      {
+        "id": "column_1_menu",
+        "name": "column_1_menu",
+        "label": "Column 1 Menu",
+        "type": "menu",
+        "default": null,
+        "help_text": "Select which menu to display in this column"
+      }
+    ],
+    "default": {
+      "column_1_heading": "Pages",
+      "column_1_menu": null
+    }
+  },
+  {
+    "id": "menu_column_2",
+    "name": "menu_column_2",
+    "label": "Menu Column 2",
+    "type": "group",
+    "children": [
+      {
+        "id": "column_2_heading",
+        "name": "column_2_heading",
+        "label": "Column 2 Heading",
+        "type": "text",
+        "default": "Utility Pages"
+      },
+      {
+        "id": "column_2_menu",
+        "name": "column_2_menu",
+        "label": "Column 2 Menu",
+        "type": "menu",
+        "default": null,
+        "help_text": "Select which menu to display in this column"
+      }
+    ],
+    "default": {
+      "column_2_heading": "Utility Pages",
+      "column_2_menu": null
+    }
+  },
+  {
+    "id": "menu_column_3",
+    "name": "menu_column_3",
+    "label": "Menu Column 3",
+    "type": "group",
+    "children": [
+      {
+        "id": "column_3_heading",
+        "name": "column_3_heading",
+        "label": "Column 3 Heading",
+        "type": "text",
+        "default": "Information"
+      },
+      {
+        "id": "column_3_menu",
+        "name": "column_3_menu",
+        "label": "Column 3 Menu",
+        "type": "menu",
+        "default": null,
+        "help_text": "Select which menu to display in this column"
+      }
+    ],
+    "default": {
+      "column_3_heading": "Information",
+      "column_3_menu": null
+    }
+  },
+  {
+    "id": "social_group",
+    "name": "social_group",
+    "label": "Social Links",
+    "type": "group",
+    "children": [
+      {
+        "id": "facebook_url",
+        "name": "facebook_url",
+        "label": "Facebook URL",
+        "type": "text",
+        "default": ""
+      },
+      {
+        "id": "twitter_url",
+        "name": "twitter_url",
+        "label": "Twitter/X URL",
+        "type": "text",
+        "default": ""
+      },
+      {
+        "id": "linkedin_url",
+        "name": "linkedin_url",
+        "label": "LinkedIn URL",
+        "type": "text",
+        "default": ""
+      },
+      {
+        "id": "instagram_url",
+        "name": "instagram_url",
+        "label": "Instagram URL",
+        "type": "text",
+        "default": ""
+      }
+    ],
+    "default": {
+      "facebook_url": "",
+      "twitter_url": "",
+      "linkedin_url": "",
+      "instagram_url": ""
+    }
+  },
+  {
+    "id": "copyright_group",
+    "name": "copyright_group",
+    "label": "Copyright & Legal",
+    "type": "group",
+    "children": [
+      {
+        "id": "copyright_text",
+        "name": "copyright_text",
+        "label": "Copyright Text",
+        "type": "text",
+        "default": "© {year} Avidly. All rights reserved.",
+        "help_text": "Use {year} to display the current year"
+      },
+      {
+        "id": "legal_links",
+        "name": "legal_links",
+        "label": "Legal Links",
+        "type": "richtext",
+        "default": "<a href=\"/privacy-policy\">Privacy Policy</a> | <a href=\"/terms-of-service\">Terms of Service</a>"
+      }
+    ],
+    "default": {
+      "copyright_text": "© {year} Avidly. All rights reserved.",
+      "legal_links": "<a href=\"/privacy-policy\">Privacy Policy</a> | <a href=\"/terms-of-service\">Terms of Service</a>"
+    }
+  }
+]
+

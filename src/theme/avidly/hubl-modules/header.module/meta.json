@@ -1,0 +1,8 @@
+{
+  "label": "Avidly Header",
+  "host_template_types": ["PAGE"],
+  "icon": "menu",
+  "is_available_for_new_content": false,
+  "smart_type": "NOT_SMART"
+}
+

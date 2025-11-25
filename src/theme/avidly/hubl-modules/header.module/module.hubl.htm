@@ -1,0 +1,172 @@
+<header class="header-section">
+  {% if module.top_bar_group.show_top_bar %}
+  <div class="header-top-bar">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-12 col-md-6">
+          <div class="header-contact">
+            {% if module.top_bar_group.top_bar_email %}
+              <a href="mailto:{{ module.top_bar_group.top_bar_email }}" class="header-contact-item">
+                <i class="ti ti-mail"></i>
+                <span>{{ module.top_bar_group.top_bar_email }}</span>
+              </a>
+            {% endif %}
+            {% if module.top_bar_group.top_bar_phone %}
+              <a href="tel:{{ module.top_bar_group.top_bar_phone }}" class="header-contact-item">
+                <i class="ti ti-phone"></i>
+                <span>{{ module.top_bar_group.top_bar_phone }}</span>
+              </a>
+            {% endif %}
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          {% if module.top_bar_group.show_top_bar_social %}
+          <div class="header-social">
+            {% if module.social_group.facebook_url %}
+              <a href="{{ module.social_group.facebook_url }}" target="_blank" rel="noopener" aria-label="Facebook">
+                <i class="ti ti-brand-facebook"></i>
+              </a>
+            {% endif %}
+            {% if module.social_group.twitter_url %}
+              <a href="{{ module.social_group.twitter_url }}" target="_blank" rel="noopener" aria-label="Twitter">
+                <i class="ti ti-brand-x"></i>
+              </a>
+            {% endif %}
+            {% if module.social_group.linkedin_url %}
+              <a href="{{ module.social_group.linkedin_url }}" target="_blank" rel="noopener" aria-label="LinkedIn">
+                <i class="ti ti-brand-linkedin"></i>
+              </a>
+            {% endif %}
+            {% if module.social_group.instagram_url %}
+              <a href="{{ module.social_group.instagram_url }}" target="_blank" rel="noopener" aria-label="Instagram">
+                <i class="ti ti-brand-instagram"></i>
+              </a>
+            {% endif %}
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  <div class="header-main">
+    <div class="container">
+      <div class="row align-items-center justify-content-between">
+        <div class="col-auto">
+          <div class="header-logo">
+            <a href="/">
+              <img 
+                src="{{ module.logo_group.logo_image.src }}" 
+                alt="{{ module.logo_group.logo_image.alt }}" 
+                width="{{ module.logo_group.logo_image.width|default(180) }}"
+                loading="eager"
+              />
+            </a>
+          </div>
+        </div>
+
+        <div class="col-auto d-lg-none">
+          <div class="mobile-trigger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+
+        <div class="col-auto d-none d-lg-block">
+          <nav class="header-navigation">
+            {% if module.navigation_group.primary_menu %}
+              {% menu id="{{ module.navigation_group.primary_menu }}", flyouts='true', max_levels='2', flow='horizontal' %}
+            {% else %}
+              {# Fallback to default menu if none selected #}
+              {% menu id='primary_menu', flyouts='true', max_levels='2', flow='horizontal' %}
+            {% endif %}
+          </nav>
+        </div>
+
+        {% if module.cta_group.show_cta %}
+        <div class="col-auto d-none d-lg-block">
+          <div class="header-cta">
+            <a 
+              href="{{ module.cta_group.cta_url }}" 
+              class="btn btn-primary"
+              {% if module.cta_group.cta_open_in_new_tab %}target="_blank" rel="noopener"{% endif %}
+            >
+              {{ module.cta_group.cta_text }}
+            </a>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</header>
+
+{# Mobile Menu #}
+<div class="mobile-menu">
+  <div class="mobile-menu-header">
+    <div class="mobile-logo">
+      <a href="/">
+        <img 
+          src="{{ module.logo_group.mobile_logo_image.src|default(module.logo_group.logo_image.src) }}" 
+          alt="{{ module.logo_group.mobile_logo_image.alt|default(module.logo_group.logo_image.alt) }}" 
+          width="{{ module.logo_group.mobile_logo_image.width|default(160) }}"
+        />
+      </a>
+    </div>
+    <div class="close-icon">
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+
+  <nav class="mobile-navigation">
+    {% if module.navigation_group.mobile_menu %}
+      {% menu id="{{ module.navigation_group.mobile_menu }}", flyouts='false', max_levels='2', flow='vertical' %}
+    {% elif module.navigation_group.primary_menu %}
+      {% menu id="{{ module.navigation_group.primary_menu }}", flyouts='false', max_levels='2', flow='vertical' %}
+    {% else %}
+      {# Fallback to default mobile menu #}
+      {% menu id='mobile_menu', flyouts='false', max_levels='2', flow='vertical' %}
+    {% endif %}
+  </nav>
+
+  <div class="mobile-social">
+    {% if module.social_group.facebook_url %}
+      <a href="{{ module.social_group.facebook_url }}" target="_blank" rel="noopener" aria-label="Facebook">
+        <i class="ti ti-brand-facebook"></i>
+      </a>
+    {% endif %}
+    {% if module.social_group.twitter_url %}
+      <a href="{{ module.social_group.twitter_url }}" target="_blank" rel="noopener" aria-label="Twitter">
+        <i class="ti ti-brand-x"></i>
+      </a>
+    {% endif %}
+    {% if module.social_group.linkedin_url %}
+      <a href="{{ module.social_group.linkedin_url }}" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <i class="ti ti-brand-linkedin"></i>
+      </a>
+    {% endif %}
+    {% if module.social_group.instagram_url %}
+      <a href="{{ module.social_group.instagram_url }}" target="_blank" rel="noopener" aria-label="Instagram">
+        <i class="ti ti-brand-instagram"></i>
+      </a>
+    {% endif %}
+  </div>
+
+  {% if module.cta_group.show_cta %}
+  <div class="mobile-cta">
+    <a 
+      href="{{ module.cta_group.cta_url }}" 
+      class="btn btn-primary w-100"
+      {% if module.cta_group.cta_open_in_new_tab %}target="_blank" rel="noopener"{% endif %}
+    >
+      {{ module.cta_group.cta_text }}
+    </a>
+  </div>
+  {% endif %}
+</div>
+
+<div class="mobile-overlay"></div>
+
