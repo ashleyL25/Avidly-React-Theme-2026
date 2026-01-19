@@ -9,6 +9,8 @@ import {
   ColorField,
   NumberField,
 } from '@hubspot/cms-components/fields';
+import { Island } from '@hubspot/cms-components';
+import ServiceIsland from '../islands/ServiceIsland?island';
 
 export function Component({ fieldValues }) {
   // Extract field values
@@ -50,84 +52,24 @@ export function Component({ fieldValues }) {
   sectionStyle.paddingTop = `${style.padding_top || 80}px`;
   sectionStyle.paddingBottom = `${style.padding_bottom || 80}px`;
 
-  // Active state for hover tabs (Style 1)
-  const [activeIndex, setActiveIndex] = React.useState(0);
+  // Prepare service data for Island (flatten the nested array structure)
+  const serviceData = services.map(service => {
+    const s = service[0] || {};
+    return {
+      title: s.title || 'Service Title',
+      subtitle: s.subtitle || 'Service description',
+      link: s.link || '#',
+      image: {
+        src: s.image?.src || 'https://via.placeholder.com/800x600/6366f1/ffffff?text=Service',
+        alt: s.image?.alt || s.title || 'Service',
+      },
+    };
+  });
 
-  // Render Style 1: Image + List Layout (like Zivan original)
+  // Render Style 1: Image + List Layout (like Zivan original) - Using Island for interactivity
   const renderStyle1 = () => {
-    const activeService = services[activeIndex]?.[0] || {};
-    const imageSrc = activeService.image?.src || 'https://via.placeholder.com/800x600/6366f1/ffffff?text=Service+Image';
-    const imageAlt = activeService.image?.alt || activeService.title || 'Service';
-    
     return (
-      <div className="row align-items-center">
-        {/* Left Column - Featured Image */}
-        <div className="col-12 col-lg-5 mb-4 mb-lg-0">
-          <div className="cs_service_featured_img">
-            <img
-              src={imageSrc}
-              alt={imageAlt}
-              className="w-100 cs_radius_15"
-              key={activeIndex}
-            />
-          </div>
-        </div>
-
-        {/* Right Column - Service List */}
-        <div className="col-12 col-lg-7">
-          <div className="cs_iconbox_3_list">
-            {services.map((service, index) => {
-              const serviceData = service[0] || {};
-              const isActive = activeIndex === index;
-
-              return (
-                <div
-                  key={index}
-                  className={`cs_hover_tab ${isActive ? 'active' : ''}`}
-                  onMouseEnter={() => setActiveIndex(index)}
-                >
-                  <a 
-                    href={serviceData.link || '#'} 
-                    className="cs_iconbox cs_style_3"
-                    style={{ textDecoration: 'none' }}
-                  >
-                    <div className="cs_iconbox_in">
-                      <h2 className="cs_iconbox_title cs_fs_29">{serviceData.title || 'Service Title'}</h2>
-                      <div className="cs_iconbox_subtitle">{serviceData.subtitle || 'Service description'}</div>
-                    </div>
-                    <span className="cs_iconbox_icon cs_center">
-                      <svg
-                        width={30}
-                        height={29}
-                        viewBox="0 0 30 29"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M29.3803 3.05172C29.4089 1.94752 28.537 1.02921 27.4328 1.00062L9.43879 0.534749C8.33459 0.506159 7.41628 1.37811 7.38769 2.48231C7.35911 3.58651 8.23106 4.50482 9.33526 4.53341L25.3299 4.94752L24.9158 20.9422C24.8872 22.0464 25.7592 22.9647 26.8634 22.9933C27.9676 23.0218 28.8859 22.1499 28.9144 21.0457L29.3803 3.05172ZM3.37714 28.5502L28.7581 4.4503L26.0039 1.54961L0.622863 25.6495L3.37714 28.5502Z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                      <svg
-                        width={30}
-                        height={29}
-                        viewBox="0 0 30 29"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M29.3803 3.05172C29.4089 1.94752 28.537 1.02921 27.4328 1.00062L9.43879 0.534749C8.33459 0.506159 7.41628 1.37811 7.38769 2.48231C7.35911 3.58651 8.23106 4.50482 9.33526 4.53341L25.3299 4.94752L24.9158 20.9422C24.8872 22.0464 25.7592 22.9647 26.8634 22.9933C27.9676 23.0218 28.8859 22.1499 28.9144 21.0457L29.3803 3.05172ZM3.37714 28.5502L28.7581 4.4503L26.0039 1.54961L0.622863 25.6495L3.37714 28.5502Z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </span>
-                  </a>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </div>
+      <Island module={ServiceIsland} services={serviceData} />
     );
   };
 
