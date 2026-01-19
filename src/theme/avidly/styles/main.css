@@ -593,11 +593,8 @@ svg#quoteIcon {
 /* Style 1: Image + List Layout */
 .cs_service_featured_img {
   position: relative;
-  border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
   background: #f8f9fa;
-  min-height: 400px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -605,7 +602,6 @@ svg#quoteIcon {
 
 .cs_service_featured_img img {
   width: 100%;
-  height: auto;
   display: block;
   opacity: 1;
   transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;

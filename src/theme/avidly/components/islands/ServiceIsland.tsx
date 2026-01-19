@@ -8,19 +8,29 @@ interface ServiceData {
     src: string;
     alt: string;
   };
+  imageHeight: number;
+  objectFit: string;
+}
+
+interface ImageStyles {
+  borderRadius: string;
+  boxShadow: string;
 }
 
 interface ServiceIslandProps {
   services: ServiceData[];
+  imageStyles: ImageStyles;
 }
 
-export default function ServiceIsland({ services }: ServiceIslandProps) {
+export default function ServiceIsland({ services, imageStyles }: ServiceIslandProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   
   const activeService = services[activeIndex] || services[0];
   const imageSrc = activeService?.image?.src || 'https://4911237.fs1.hubspotusercontent-na1.net/hubfs/4911237/flowerimage.jpeg';
   const imageAlt = activeService?.image?.alt || activeService?.title || 'Service';
+  const imageHeight = activeService?.imageHeight || 400;
+  const objectFit = activeService?.objectFit || 'cover';
   
   console.log('Active service:', activeService); // Debug log
   console.log('Image src:', imageSrc); // Debug log
@@ -39,11 +49,17 @@ export default function ServiceIsland({ services }: ServiceIslandProps) {
     <div className="row align-items-center">
       {/* Left Column - Featured Image */}
       <div className="col-12 col-lg-5 mb-4 mb-lg-0">
-        <div className="cs_service_featured_img">
+        <div className="cs_service_featured_img" style={{ height: `${imageHeight}px` }}>
           <img
             src={imageSrc}
             alt={imageAlt}
-            className={`w-100 cs_radius_15 ${isTransitioning ? 'transitioning' : ''}`}
+            className={`w-100 ${isTransitioning ? 'transitioning' : ''}`}
+            style={{
+              height: '100%',
+              objectFit: objectFit as any,
+              borderRadius: imageStyles.borderRadius,
+              boxShadow: imageStyles.boxShadow,
+            }}
           />
         </div>
       </div>

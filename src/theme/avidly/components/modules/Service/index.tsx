@@ -64,13 +64,23 @@ export function Component({ fieldValues }) {
         src: service.image?.src || 'https://4911237.fs1.hubspotusercontent-na1.net/hubfs/4911237/flowerimage.jpeg',
         alt: service.image?.alt || service.title || 'Service',
       },
+      imageHeight: service.image_height || 400,
+      objectFit: service.object_fit || 'cover',
     };
   });
+
+  // Image styling from style settings
+  const imageStyles = {
+    borderRadius: `${style.image_border_radius || 15}px`,
+    boxShadow: style.enable_shadow
+      ? `${style.shadow_x || 0}px ${style.shadow_y || 10}px ${style.shadow_blur || 40}px rgba(0, 0, 0, ${(style.shadow_opacity || 10) / 100})`
+      : 'none',
+  };
 
   // Render Style 1: Image + List Layout (like Zivan original) - Using Island for interactivity
   const renderStyle1 = () => {
     return (
-      <Island module={ServiceIsland} services={serviceData} hydrateOn="load" />
+      <Island module={ServiceIsland} services={serviceData} imageStyles={imageStyles} hydrateOn="load" />
     );
   };
 
@@ -324,6 +334,23 @@ export const fields = (
           alt: 'Service thumbnail',
         }}
       />
+      <NumberField
+        name="image_height"
+        label="Image Height (px)"
+        default={400}
+        min={200}
+        max={800}
+        step={10}
+      />
+      <ChoiceField
+        name="object_fit"
+        label="Image Object Fit"
+        choices={[
+          ['cover', 'Cover (fills area, may crop)'],
+          ['contain', 'Contain (fits entire image)'],
+        ]}
+        default="cover"
+      />
     </RepeatedFieldGroup>
 
     {/* Style Group */}
@@ -429,6 +456,67 @@ export const fields = (
         min={0}
         max={200}
         step={5}
+      />
+      <NumberField
+        name="image_border_radius"
+        label="Image Border Radius (px)"
+        default={15}
+        min={0}
+        max={50}
+        step={1}
+      />
+      <BooleanField
+        name="enable_shadow"
+        label="Enable Image Shadow"
+        default={true}
+      />
+      <NumberField
+        name="shadow_x"
+        label="Shadow Horizontal Offset (px)"
+        default={0}
+        min={-50}
+        max={50}
+        step={1}
+        visibility={{
+          controllingField: 'enable_shadow',
+          controllingValueRegex: 'true',
+        }}
+      />
+      <NumberField
+        name="shadow_y"
+        label="Shadow Vertical Offset (px)"
+        default={10}
+        min={-50}
+        max={50}
+        step={1}
+        visibility={{
+          controllingField: 'enable_shadow',
+          controllingValueRegex: 'true',
+        }}
+      />
+      <NumberField
+        name="shadow_blur"
+        label="Shadow Blur Radius (px)"
+        default={40}
+        min={0}
+        max={100}
+        step={1}
+        visibility={{
+          controllingField: 'enable_shadow',
+          controllingValueRegex: 'true',
+        }}
+      />
+      <NumberField
+        name="shadow_opacity"
+        label="Shadow Opacity (%)"
+        default={10}
+        min={0}
+        max={100}
+        step={5}
+        visibility={{
+          controllingField: 'enable_shadow',
+          controllingValueRegex: 'true',
+        }}
       />
       <TextField name="custom_css_class" label="Custom CSS Class" />
       <TextField name="custom_id" label="Custom ID" />
