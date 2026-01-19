@@ -52,18 +52,17 @@ export function Component({ fieldValues }) {
   sectionStyle.paddingTop = `${style.padding_top || 80}px`;
   sectionStyle.paddingBottom = `${style.padding_bottom || 80}px`;
 
-  // Prepare service data for Island (flatten the nested array structure)
+  // Prepare service data for Island
   const serviceData = services.map(service => {
-    const s = service[0] || {};
-    console.log('Service data:', s); // Debug log
-    console.log('Image field:', s.image); // Debug log
+    console.log('Service data:', service); // Debug log
+    console.log('Image field:', service.image); // Debug log
     return {
-      title: s.title || 'Service Title',
-      subtitle: s.subtitle || 'Service description',
-      link: s.link || '#',
+      title: service.title || 'Service Title',
+      subtitle: service.subtitle || 'Service description',
+      link: service.link || '#',
       image: {
-        src: s.image?.src || 'https://4911237.fs1.hubspotusercontent-na1.net/hubfs/4911237/flowerimage.jpeg',
-        alt: s.image?.alt || s.title || 'Service',
+        src: service.image?.src || 'https://4911237.fs1.hubspotusercontent-na1.net/hubfs/4911237/flowerimage.jpeg',
+        alt: service.image?.alt || service.title || 'Service',
       },
     };
   });
@@ -82,35 +81,33 @@ export function Component({ fieldValues }) {
     return (
       <ul className={`cs_image_box_1_list ${variantColor} cs_mp0`}>
         {services.map((service, index) => {
-          const serviceData = service[0] || {};
-
           return (
             <li key={index}>
               <div className="cs_image_box cs_style_1">
                 <div className="cs_image_box_number cs_primary_color cs_primary_font cs_fs_38 cs_semibold">
-                  {serviceData.number || (index + 1).toString().padStart(2, '0')}
+                  {service.number || (index + 1).toString().padStart(2, '0')}
                 </div>
                 <a
-                  href={serviceData.link || '#'}
+                  href={service.link || '#'}
                   className="cs_image_box_img cs_radius_15 overflow-hidden"
                   style={{ display: 'block', textDecoration: 'none' }}
                 >
-                  {serviceData.thumbnail?.src && (
+                  {service.thumbnail?.src && (
                     <img 
-                      src={serviceData.thumbnail.src} 
-                      alt={serviceData.thumbnail.alt || serviceData.title || 'Service'} 
+                      src={service.thumbnail.src} 
+                      alt={service.thumbnail.alt || service.title || 'Service'} 
                     />
                   )}
                 </a>
                 <div className="cs_image_box_info position-relative">
                   <h2 className="cs_image_box_title cs_fs_29 cs_semibold">
-                    <a href={serviceData.link || '#'} style={{ textDecoration: 'none' }}>
-                      {serviceData.title || 'Service Title'}
+                    <a href={service.link || '#'} style={{ textDecoration: 'none' }}>
+                      {service.title || 'Service Title'}
                     </a>
                   </h2>
-                  <p className="cs_image_box_subtitle mb-0">{serviceData.subtitle || 'Service description'}</p>
+                  <p className="cs_image_box_subtitle mb-0">{service.subtitle || 'Service description'}</p>
                   <a
-                    href={serviceData.link || '#'}
+                    href={service.link || '#'}
                     className="cs_image_box_btn cs_center position-absolute rounded-circle"
                   >
                     <svg
