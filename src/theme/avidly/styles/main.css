@@ -590,6 +590,144 @@ svg#quoteIcon {
   overflow: hidden;
 }
 
+/* Utility Classes */
+.cs_primary_bg {
+  background-color: var(--Primary, #0d0d0d);
+}
+
+.cs_accent_color {
+  color: var(--Secondary, #fd6219);
+}
+
+.cs_white_color {
+  color: #ffffff;
+}
+
+.cs_center {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.cs_radius_15 {
+  border-radius: 15px;
+}
+
+/* Font Size Utilities */
+.cs_fs_18 {
+  font-size: 18px;
+}
+
+.cs_fs_29 {
+  font-size: 29px;
+}
+
+.cs_fs_50 {
+  font-size: 50px;
+}
+
+/* Spacing Utilities */
+.cs_height_10 {
+  height: 10px;
+}
+
+.cs_height_45 {
+  height: 45px;
+}
+
+.cs_height_135 {
+  height: 135px;
+}
+
+.cs_height_143 {
+  height: 143px;
+}
+
+@media screen and (max-width: 991px) {
+  .cs_height_lg_5 {
+    height: 5px;
+  }
+  
+  .cs_height_lg_30 {
+    height: 30px;
+  }
+  
+  .cs_height_lg_65 {
+    height: 65px;
+  }
+  
+  .cs_height_lg_75 {
+    height: 75px;
+  }
+  
+  .cs_fs_50 {
+    font-size: 36px;
+  }
+}
+
+/* Section Heading Styles */
+.cs_section_heading {
+  margin-bottom: 0;
+}
+
+.cs_section_heading.cs_style_1 {
+  text-align: center;
+}
+
+.cs_section_subtitle {
+  font-weight: 500;
+  margin-bottom: 0;
+  letter-spacing: 0.5px;
+}
+
+.cs_section_title {
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 0;
+}
+
+/* Image Layer with Background Effect */
+.cs_image_layer.cs_style1 {
+  padding-right: 60px;
+  padding-bottom: 60px;
+}
+
+.cs_image_layer.cs_style1 img {
+  position: relative;
+  z-index: 2;
+}
+
+.cs_image_layer.cs_style1 .cs_image_layer_in {
+  position: relative;
+  border-radius: 15px;
+}
+
+.cs_image_layer.cs_style1 .cs_image_layer_in::after {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  right: -60px;
+  bottom: -60px;
+  background-color: var(--Secondary, #fd6219);
+  border-radius: inherit;
+  z-index: 1;
+}
+
+.cs_image_layer.cs_style1.cs_size_md {
+  padding-right: 20px;
+  padding-bottom: 20px;
+}
+
+.cs_image_layer.cs_style1.cs_size_md .cs_image_layer_in::after {
+  right: -20px;
+  bottom: -20px;
+}
+
 /* Style 1: Image + List Layout - Matches Original Zivan */
 .cs_iconbox_3_list {
   position: relative;
