@@ -590,26 +590,58 @@ svg#quoteIcon {
   overflow: hidden;
 }
 
-/* Style 1: Image + List Layout */
-.cs_service_featured_img {
+/* Style 1: Image + List Layout - Matches Original Zivan */
+.cs_iconbox_3_list {
   position: relative;
+  padding-left: 550px;
+  min-height: 640px;
 }
 
-.cs_image_layer_in {
-  position: relative;
+.cs_iconbox_3_list > *:not(:last-child) {
+  border-bottom: 1px solid #4d4d4d;
+}
+
+.cs_iconbox_3_list .cs_image_layer {
+  position: absolute;
+  left: 0;
+  top: 25px;
+  pointer-events: none;
+  max-width: 416px;
+  height: 600px;
+}
+
+.cs_iconbox_3_list .cs_image_layer .cs_image_layer_in {
+  height: 100%;
   width: 100%;
 }
 
-.cs_service_img {
-  display: block;
-  animation: activeImageWipe 0.6s forwards ease;
+.cs_iconbox_3_list .cs_image_layer img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  position: relative;
+  clip-path: inset(0 100% 0 0);
+  animation: inactiveImageAnimation 0.6s forwards ease;
 }
 
-@keyframes activeImageWipe {
-  from {
+.cs_iconbox_3_list .cs_hover_tab.active .cs_image_layer img {
+  animation: activeImageAnimation 0.6s forwards ease;
+}
+
+@keyframes inactiveImageAnimation {
+  0% {
+    clip-path: inset(0 0 0 0);
+  }
+  100% {
+    clip-path: inset(0 100% 0 0);
+  }
+}
+
+@keyframes activeImageAnimation {
+  0% {
     clip-path: inset(0 0 0 100%);
   }
-  to {
+  100% {
     clip-path: inset(0 0 0 0);
   }
 }
@@ -625,105 +657,87 @@ svg#quoteIcon {
 
 .cs_hover_tab {
   position: relative;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.cs_hover_tab:last-child {
-  border-bottom: none;
+  transition: all 0.3s ease;
 }
 
 .cs_iconbox.cs_style_3 {
   display: flex;
   align-items: center;
+  flex-direction: row-reverse;
   justify-content: space-between;
-  position: relative;
-  padding: 2rem 0;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: pointer;
-  gap: 2rem;
+  padding-bottom: 25px;
+  padding-top: 25px;
+  color: var(--Secondary);
 }
 
-.cs_iconbox_in {
-  flex: 1;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+.cs_iconbox.cs_style_3 .cs_iconbox_in {
+  margin-right: 30px;
+  max-width: 580px;
 }
 
-.cs_iconbox_title {
+.cs_iconbox.cs_style_3 .cs_iconbox_title {
+  margin-bottom: 15px;
+  color: #fff;
   font-size: 1.75rem;
   font-weight: 600;
-  margin-bottom: 0.5rem;
-  color: var(--Heading);
-  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cs_iconbox.cs_style_3 .cs_iconbox_subtitle {
+  color: #dddddd;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.cs_iconbox.cs_style_3 .cs_iconbox_icon {
+  color: #4f4747;
+  border: 2px solid #4f4747;
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  flex: none;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cs_iconbox.cs_style_3 .cs_iconbox_icon svg {
+  transition: all 0.3s;
+  width: 30px;
+  height: 29px;
+}
+
+.cs_iconbox.cs_style_3 .cs_iconbox_icon svg:first-child {
+  transform: translate(0, 0);
+}
+
+.cs_iconbox.cs_style_3 .cs_iconbox_icon svg:last-child {
+  position: absolute;
+  left: -20px;
+  bottom: -20px;
+}
+
+.cs_iconbox.cs_style_3:hover .cs_iconbox_icon,
+.cs_hover_tab.active .cs_iconbox_icon {
+  color: #fff;
+  background-color: var(--Secondary);
+  border-color: var(--Secondary);
+}
+
+.cs_hover_tab.active .cs_iconbox_icon svg:last-child {
+  position: absolute;
+  left: 23px;
+  bottom: 23px;
+}
+
+.cs_hover_tab.active .cs_iconbox_icon svg:first-child {
+  transform: translate(44px, -40px);
 }
 
 .cs_hover_tab.active .cs_iconbox_title {
   color: var(--Primary);
-}
-
-.cs_iconbox_subtitle {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: var(--Body);
-  margin: 0;
-  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.cs_iconbox_icon {
-  position: relative;
-  width: 50px;
-  height: 50px;
-  min-width: 50px;
-  background: transparent;
-  border: 2px solid rgba(0, 0, 0, 0.2);
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  flex-shrink: 0;
-}
-
-.cs_iconbox_icon svg {
-  width: 24px;
-  height: 24px;
-  color: var(--Heading);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.cs_iconbox_icon svg:first-child {
-  opacity: 1;
-  position: absolute;
-}
-
-.cs_iconbox_icon svg:last-child {
-  opacity: 0;
-  position: absolute;
-  transform: translate(5px, -5px);
-}
-
-.cs_hover_tab:hover .cs_iconbox_icon,
-.cs_hover_tab.active .cs_iconbox_icon {
-  background: var(--Secondary);
-  border-color: var(--Secondary);
-  transform: scale(1.1);
-}
-
-.cs_hover_tab:hover .cs_iconbox_icon svg,
-.cs_hover_tab.active .cs_iconbox_icon svg {
-  color: #ffffff;
-}
-
-.cs_hover_tab:hover .cs_iconbox_icon svg:first-child,
-.cs_hover_tab.active .cs_iconbox_icon svg:first-child {
-  opacity: 0;
-  transform: translate(-5px, 5px);
-}
-
-.cs_hover_tab:hover .cs_iconbox_icon svg:last-child,
-.cs_hover_tab.active .cs_iconbox_icon svg:last-child {
-  opacity: 1;
-  transform: translate(0, 0);
 }
 
 /* Style 2: Numbered Grid */
@@ -874,9 +888,36 @@ svg#quoteIcon {
 }
 
 /* Responsive Design */
-@media (max-width: 991px) {
-  .cs_service_featured_img {
-    margin-bottom: 2rem;
+@media screen and (max-width: 1400px) {
+  .cs_iconbox_3_list {
+    padding-left: 520px;
+  }
+  
+  .cs_iconbox_3_list .cs_image_layer {
+    height: 640px;
+  }
+}
+
+@media screen and (max-width: 1199px) {
+  .cs_iconbox_3_list {
+    padding-left: 460px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .cs_iconbox.cs_style_3 .cs_iconbox_title {
+    font-size: 26px;
+    margin-bottom: 10px;
+  }
+  
+  .cs_iconbox_3_list {
+    padding-left: 0;
+    padding-top: 690px;
+  }
+  
+  .cs_iconbox_3_list .cs_image_layer {
+    max-width: 100%;
+    width: 100%;
   }
 }
 
@@ -885,21 +926,32 @@ svg#quoteIcon {
     grid-template-columns: 1fr;
   }
   
-  .cs_iconbox_title,
   .cs_image_box_title {
     font-size: 1.5rem;
   }
-  
+}
+
+@media screen and (max-width: 575px) {
   .cs_iconbox.cs_style_3 {
-    padding: 1.5rem 0;
     flex-direction: column;
     align-items: flex-start;
-    gap: 1rem;
   }
   
-  .cs_iconbox_icon {
-    align-self: flex-end;
-    margin-top: 1rem;
+  .cs_iconbox.cs_style_3 .cs_iconbox_icon {
+    position: relative;
+    transform: initial;
+    margin-bottom: 20px;
+    height: 60px;
+    width: 60px;
+  }
+  
+  .cs_iconbox.cs_style_3 .cs_iconbox_icon svg {
+    max-height: 22px;
+  }
+  
+  .cs_hover_tab.active .cs_iconbox_icon svg:last-child {
+    left: 13px;
+    bottom: 17px;
   }
 }
 

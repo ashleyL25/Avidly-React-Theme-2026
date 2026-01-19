@@ -78,7 +78,11 @@ export function Component({ fieldValues }) {
   // Render Style 1: Image + List Layout (like Zivan original) - Using Island for interactivity
   const renderStyle1 = () => {
     return (
-      <Island module={ServiceIsland} services={serviceData} imageStyles={imageStyles} hydrateOn="load" />
+      <div className="row">
+        <div className="col-12">
+          <Island module={ServiceIsland} services={serviceData} imageStyles={imageStyles} hydrateOn="load" />
+        </div>
+      </div>
     );
   };
 
