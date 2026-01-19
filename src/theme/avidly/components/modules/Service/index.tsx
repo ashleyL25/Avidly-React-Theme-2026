@@ -78,11 +78,7 @@ export function Component({ fieldValues }) {
   // Render Style 1: Image + List Layout (like Zivan original) - Using Island for interactivity
   const renderStyle1 = () => {
     return (
-      <div className="row">
-        <div className="col-12">
-          <Island module={ServiceIsland} services={serviceData} imageStyles={imageStyles} hydrateOn="load" />
-        </div>
-      </div>
+      <Island module={ServiceIsland} services={serviceData} imageStyles={imageStyles} hydrateOn="load" />
     );
   };
 
@@ -197,11 +193,15 @@ export function Component({ fieldValues }) {
         )}
 
         {/* Services Grid */}
-        <div className="row">
-          <div className="col-12">
-            {style.display_style === 'style2' ? renderStyle2() : renderStyle1()}
+        {style.display_style === 'style2' ? (
+          <div className="row">
+            <div className="col-12">
+              {renderStyle2()}
+            </div>
           </div>
-        </div>
+        ) : (
+          renderStyle1()
+        )}
       </div>
     </section>
   );
