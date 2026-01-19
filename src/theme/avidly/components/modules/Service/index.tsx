@@ -53,71 +53,82 @@ export function Component({ fieldValues }) {
   // Active state for hover tabs (Style 1)
   const [activeIndex, setActiveIndex] = React.useState(0);
 
-  // Render Style 1: Hover Tabs
-  const renderStyle1 = () => (
-    <div className="cs_iconbox_3_list">
-      {services.map((service, index) => {
-        const serviceData = service[0] || {};
-        const isActive = activeIndex === index;
-
-        return (
-          <div
-            key={index}
-            className={`cs_hover_tab ${isActive ? 'active' : ''}`}
-            onMouseEnter={() => setActiveIndex(index)}
-          >
-            <a 
-              href={serviceData.link || '#'} 
-              className="cs_iconbox cs_style_3"
-              style={{ textDecoration: 'none' }}
-            >
-              <div className="cs_image_layer cs_style1 cs_size_md">
-                <div className="cs_image_layer_in">
-                  {serviceData.image?.src && (
-                    <img
-                      src={serviceData.image.src}
-                      alt={serviceData.image.alt || serviceData.title || 'Service'}
-                      className="w-100 cs_radius_15"
-                    />
-                  )}
-                </div>
-              </div>
-              <span className="cs_iconbox_icon cs_center">
-                <svg
-                  width={30}
-                  height={29}
-                  viewBox="0 0 30 29"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M29.3803 3.05172C29.4089 1.94752 28.537 1.02921 27.4328 1.00062L9.43879 0.534749C8.33459 0.506159 7.41628 1.37811 7.38769 2.48231C7.35911 3.58651 8.23106 4.50482 9.33526 4.53341L25.3299 4.94752L24.9158 20.9422C24.8872 22.0464 25.7592 22.9647 26.8634 22.9933C27.9676 23.0218 28.8859 22.1499 28.9144 21.0457L29.3803 3.05172ZM3.37714 28.5502L28.7581 4.4503L26.0039 1.54961L0.622863 25.6495L3.37714 28.5502Z"
-                    fill="currentColor"
-                  />
-                </svg>
-                <svg
-                  width={30}
-                  height={29}
-                  viewBox="0 0 30 29"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M29.3803 3.05172C29.4089 1.94752 28.537 1.02921 27.4328 1.00062L9.43879 0.534749C8.33459 0.506159 7.41628 1.37811 7.38769 2.48231C7.35911 3.58651 8.23106 4.50482 9.33526 4.53341L25.3299 4.94752L24.9158 20.9422C24.8872 22.0464 25.7592 22.9647 26.8634 22.9933C27.9676 23.0218 28.8859 22.1499 28.9144 21.0457L29.3803 3.05172ZM3.37714 28.5502L28.7581 4.4503L26.0039 1.54961L0.622863 25.6495L3.37714 28.5502Z"
-                    fill="currentColor"
-                  />
-                </svg>
-              </span>
-              <div className="cs_iconbox_in">
-                <h2 className="cs_iconbox_title cs_fs_29">{serviceData.title || 'Service Title'}</h2>
-                <div className="cs_iconbox_subtitle">{serviceData.subtitle || 'Service description'}</div>
-              </div>
-            </a>
+  // Render Style 1: Image + List Layout (like Zivan original)
+  const renderStyle1 = () => {
+    const activeService = services[activeIndex]?.[0] || {};
+    
+    return (
+      <div className="row align-items-center">
+        {/* Left Column - Featured Image */}
+        <div className="col-12 col-lg-5 mb-4 mb-lg-0">
+          <div className="cs_service_featured_img">
+            {activeService.image?.src && (
+              <img
+                src={activeService.image.src}
+                alt={activeService.image.alt || activeService.title || 'Service'}
+                className="w-100 cs_radius_15"
+              />
+            )}
           </div>
-        );
-      })}
-    </div>
-  );
+        </div>
+
+        {/* Right Column - Service List */}
+        <div className="col-12 col-lg-7">
+          <div className="cs_iconbox_3_list">
+            {services.map((service, index) => {
+              const serviceData = service[0] || {};
+              const isActive = activeIndex === index;
+
+              return (
+                <div
+                  key={index}
+                  className={`cs_hover_tab ${isActive ? 'active' : ''}`}
+                  onMouseEnter={() => setActiveIndex(index)}
+                >
+                  <a 
+                    href={serviceData.link || '#'} 
+                    className="cs_iconbox cs_style_3"
+                    style={{ textDecoration: 'none' }}
+                  >
+                    <div className="cs_iconbox_in">
+                      <h2 className="cs_iconbox_title cs_fs_29">{serviceData.title || 'Service Title'}</h2>
+                      <div className="cs_iconbox_subtitle">{serviceData.subtitle || 'Service description'}</div>
+                    </div>
+                    <span className="cs_iconbox_icon cs_center">
+                      <svg
+                        width={30}
+                        height={29}
+                        viewBox="0 0 30 29"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M29.3803 3.05172C29.4089 1.94752 28.537 1.02921 27.4328 1.00062L9.43879 0.534749C8.33459 0.506159 7.41628 1.37811 7.38769 2.48231C7.35911 3.58651 8.23106 4.50482 9.33526 4.53341L25.3299 4.94752L24.9158 20.9422C24.8872 22.0464 25.7592 22.9647 26.8634 22.9933C27.9676 23.0218 28.8859 22.1499 28.9144 21.0457L29.3803 3.05172ZM3.37714 28.5502L28.7581 4.4503L26.0039 1.54961L0.622863 25.6495L3.37714 28.5502Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                      <svg
+                        width={30}
+                        height={29}
+                        viewBox="0 0 30 29"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M29.3803 3.05172C29.4089 1.94752 28.537 1.02921 27.4328 1.00062L9.43879 0.534749C8.33459 0.506159 7.41628 1.37811 7.38769 2.48231C7.35911 3.58651 8.23106 4.50482 9.33526 4.53341L25.3299 4.94752L24.9158 20.9422C24.8872 22.0464 25.7592 22.9647 26.8634 22.9933C27.9676 23.0218 28.8859 22.1499 28.9144 21.0457L29.3803 3.05172ZM3.37714 28.5502L28.7581 4.4503L26.0039 1.54961L0.622863 25.6495L3.37714 28.5502Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </span>
+                  </a>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   // Render Style 2: Numbered Grid
   const renderStyle2 = () => {
