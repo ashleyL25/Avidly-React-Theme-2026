@@ -580,3 +580,337 @@ svg#quoteIcon {
   display: none;
 }
 
+/* ======================================
+   Service Module Styles
+   ====================================== */
+
+/* Service Section */
+.service-section {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Style 1: Hover Tabs */
+.cs_iconbox_3_list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.cs_hover_tab {
+  position: relative;
+  transition: all 0.4s ease;
+}
+
+.cs_iconbox.cs_style_3 {
+  display: block;
+  position: relative;
+  padding: 2.5rem;
+  background: #ffffff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s ease;
+  min-height: 350px;
+  cursor: pointer;
+}
+
+.cs_hover_tab:hover .cs_iconbox.cs_style_3,
+.cs_hover_tab.active .cs_iconbox.cs_style_3 {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+.cs_image_layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 0;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.cs_hover_tab:hover .cs_image_layer,
+.cs_hover_tab.active .cs_image_layer {
+  opacity: 1;
+}
+
+.cs_image_layer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
+  z-index: 1;
+}
+
+.cs_image_layer_in {
+  width: 100%;
+  height: 100%;
+}
+
+.cs_image_layer_in img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cs_iconbox_icon {
+  position: relative;
+  z-index: 2;
+  width: 60px;
+  height: 60px;
+  background: var(--Primary);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  transition: all 0.4s ease;
+}
+
+.cs_iconbox_icon svg {
+  width: 30px;
+  height: 30px;
+  color: #ffffff;
+  transition: all 0.3s ease;
+}
+
+.cs_iconbox_icon svg:first-child {
+  opacity: 1;
+  position: absolute;
+}
+
+.cs_iconbox_icon svg:last-child {
+  opacity: 0;
+  position: absolute;
+  transform: translate(5px, -5px);
+}
+
+.cs_hover_tab:hover .cs_iconbox_icon svg:first-child,
+.cs_hover_tab.active .cs_iconbox_icon svg:first-child {
+  opacity: 0;
+  transform: translate(-5px, 5px);
+}
+
+.cs_hover_tab:hover .cs_iconbox_icon svg:last-child,
+.cs_hover_tab.active .cs_iconbox_icon svg:last-child {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.cs_iconbox_in {
+  position: relative;
+  z-index: 2;
+  transition: all 0.4s ease;
+}
+
+.cs_iconbox_title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: var(--Heading);
+  transition: all 0.4s ease;
+}
+
+.cs_hover_tab:hover .cs_iconbox_title,
+.cs_hover_tab.active .cs_iconbox_title {
+  color: #ffffff;
+}
+
+.cs_iconbox_subtitle {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--Body);
+  transition: all 0.4s ease;
+}
+
+.cs_hover_tab:hover .cs_iconbox_subtitle,
+.cs_hover_tab.active .cs_iconbox_subtitle {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.cs_hover_tab:hover .cs_iconbox_icon,
+.cs_hover_tab.active .cs_iconbox_icon {
+  background: #ffffff;
+}
+
+.cs_hover_tab:hover .cs_iconbox_icon svg,
+.cs_hover_tab.active .cs_iconbox_icon svg {
+  color: var(--Primary);
+}
+
+/* Style 2: Numbered Grid */
+.cs_image_box_1_list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.cs_image_box_1_list.cs_mp0 li {
+  padding: 0;
+}
+
+.cs_image_box.cs_style_1 {
+  position: relative;
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s ease;
+}
+
+.cs_image_box.cs_style_1:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+.cs_image_box_number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--Primary);
+  margin-bottom: 1.5rem;
+  line-height: 1;
+}
+
+.cs_image_box_img {
+  display: block;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.cs_image_box_img img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.cs_image_box.cs_style_1:hover .cs_image_box_img img {
+  transform: scale(1.05);
+}
+
+.cs_image_box_info {
+  position: relative;
+  padding-right: 60px;
+}
+
+.cs_image_box_title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: var(--Heading);
+}
+
+.cs_image_box_title a {
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+.cs_image_box_title a:hover {
+  color: var(--Primary);
+}
+
+.cs_image_box_subtitle {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--Body);
+}
+
+.cs_image_box_btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 50px;
+  height: 50px;
+  background: var(--Primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.cs_image_box_btn svg {
+  width: 24px;
+  height: 24px;
+  color: #ffffff;
+  transition: all 0.3s ease;
+}
+
+.cs_image_box_btn svg:first-child {
+  opacity: 1;
+  position: absolute;
+}
+
+.cs_image_box_btn svg:last-child {
+  opacity: 0;
+  position: absolute;
+  transform: translate(5px, -5px);
+}
+
+.cs_image_box_btn:hover {
+  background: var(--Secondary);
+}
+
+.cs_image_box_btn:hover svg:first-child {
+  opacity: 0;
+  transform: translate(-5px, 5px);
+}
+
+.cs_image_box_btn:hover svg:last-child {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/* Color Variants for Style 2 */
+.cs_image_box_1_list.cs_color_1 .cs_image_box_number,
+.cs_image_box_1_list.cs_color_1 .cs_image_box_btn {
+  color: #6366f1;
+  background-color: #6366f1;
+}
+
+.cs_image_box_1_list.cs_color_2 .cs_image_box_number,
+.cs_image_box_1_list.cs_color_2 .cs_image_box_btn {
+  color: #f59e0b;
+  background-color: #f59e0b;
+}
+
+.cs_image_box_1_list.cs_color_3 .cs_image_box_number,
+.cs_image_box_1_list.cs_color_3 .cs_image_box_btn {
+  color: #3b82f6;
+  background-color: #3b82f6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .cs_iconbox_3_list,
+  .cs_image_box_1_list {
+    grid-template-columns: 1fr;
+  }
+  
+  .cs_iconbox_title,
+  .cs_image_box_title {
+    font-size: 1.5rem;
+  }
+  
+  .cs_iconbox.cs_style_3 {
+    min-height: 300px;
+    padding: 2rem;
+  }
+}
+
