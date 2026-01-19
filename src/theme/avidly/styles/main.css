@@ -746,6 +746,11 @@ svg#quoteIcon {
   pointer-events: none;
   max-width: 416px;
   height: 600px;
+  z-index: 1;
+}
+
+.cs_iconbox_3_list .cs_hover_tab.active .cs_image_layer {
+  z-index: 2;
 }
 
 .cs_iconbox_3_list .cs_image_layer .cs_image_layer_in {
@@ -758,12 +763,16 @@ svg#quoteIcon {
   width: 100%;
   object-fit: cover;
   position: relative;
-  clip-path: inset(0 100% 0 0);
-  animation: inactiveImageAnimation 0.6s forwards ease;
+  clip-path: inset(0 100% 0 0) !important;
 }
 
 .cs_iconbox_3_list .cs_hover_tab.active .cs_image_layer img {
-  animation: activeImageAnimation 0.6s forwards ease;
+  clip-path: inset(0 0 0 0) !important;
+  animation: activeImageAnimation 0.6s ease;
+}
+
+.cs_iconbox_3_list .cs_hover_tab:not(.active) .cs_image_layer img {
+  animation: inactiveImageAnimation 0.6s ease;
 }
 
 @keyframes inactiveImageAnimation {
@@ -797,6 +806,8 @@ svg#quoteIcon {
   padding-bottom: 25px;
   padding-top: 25px;
   color: var(--Secondary);
+  position: relative;
+  z-index: 3;
 }
 
 .cs_iconbox.cs_style_3 .cs_iconbox_in {

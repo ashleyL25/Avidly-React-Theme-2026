@@ -23,7 +23,7 @@ interface ServiceIslandProps {
 }
 
 export default function ServiceIsland({ services, imageStyles }: ServiceIslandProps) {
-  const [active, setActive] = useState(0);
+  const [active, setActive] = useState(1);
 
   return (
     <div className="cs_iconbox_3_list" style={imageStyles.height !== 'auto' ? { minHeight: imageStyles.height } : {}}>
