@@ -10,7 +10,7 @@ import {
   NumberField,
 } from '@hubspot/cms-components/fields';
 import { Island } from '@hubspot/cms-components';
-import ServiceIsland from '../islands/ServiceIsland?island';
+import ServiceIsland from '../../islands/ServiceIsland.tsx?island';
 
 export function Component({ fieldValues }) {
   // Extract field values
