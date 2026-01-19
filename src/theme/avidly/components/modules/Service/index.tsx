@@ -56,19 +56,20 @@ export function Component({ fieldValues }) {
   // Render Style 1: Image + List Layout (like Zivan original)
   const renderStyle1 = () => {
     const activeService = services[activeIndex]?.[0] || {};
+    const imageSrc = activeService.image?.src || 'https://via.placeholder.com/800x600/6366f1/ffffff?text=Service+Image';
+    const imageAlt = activeService.image?.alt || activeService.title || 'Service';
     
     return (
       <div className="row align-items-center">
         {/* Left Column - Featured Image */}
         <div className="col-12 col-lg-5 mb-4 mb-lg-0">
           <div className="cs_service_featured_img">
-            {activeService.image?.src && (
-              <img
-                src={activeService.image.src}
-                alt={activeService.image.alt || activeService.title || 'Service'}
-                className="w-100 cs_radius_15"
-              />
-            )}
+            <img
+              src={imageSrc}
+              alt={imageAlt}
+              className="w-100 cs_radius_15"
+              key={activeIndex}
+            />
           </div>
         </div>
 
@@ -306,18 +307,59 @@ export const fields = (
       default={[
         {
           title: 'Web Development',
-          subtitle: 'Custom web solutions tailored to your needs',
+          subtitle: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium lorema doloremque laudantium, totam rem aperiam, eaque ipsa quae.',
           number: '01',
-        },
-        {
-          title: 'Mobile Apps',
-          subtitle: 'Native and cross-platform mobile applications',
-          number: '02',
+          link: '#',
+          image: {
+            src: 'https://via.placeholder.com/800x600/6366f1/ffffff?text=Web+Development',
+            alt: 'Web Development',
+          },
+          thumbnail: {
+            src: 'https://via.placeholder.com/400x300/6366f1/ffffff?text=Web+Development',
+            alt: 'Web Development',
+          },
         },
         {
           title: 'UI/UX Design',
-          subtitle: 'Beautiful and intuitive user experiences',
+          subtitle: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium lorema doloremque laudantium, totam rem aperiam, eaque ipsa quae.',
+          number: '02',
+          link: '#',
+          image: {
+            src: 'https://via.placeholder.com/800x600/f59e0b/ffffff?text=UI+UX+Design',
+            alt: 'UI/UX Design',
+          },
+          thumbnail: {
+            src: 'https://via.placeholder.com/400x300/f59e0b/ffffff?text=UI+UX+Design',
+            alt: 'UI/UX Design',
+          },
+        },
+        {
+          title: 'Branding',
+          subtitle: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium lorema doloremque laudantium, totam rem aperiam, eaque ipsa quae.',
           number: '03',
+          link: '#',
+          image: {
+            src: 'https://via.placeholder.com/800x600/3b82f6/ffffff?text=Branding',
+            alt: 'Branding',
+          },
+          thumbnail: {
+            src: 'https://via.placeholder.com/400x300/3b82f6/ffffff?text=Branding',
+            alt: 'Branding',
+          },
+        },
+        {
+          title: 'Social Ad Campaign',
+          subtitle: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium lorema doloremque laudantium, totam rem aperiam, eaque ipsa quae.',
+          number: '04',
+          link: '#',
+          image: {
+            src: 'https://via.placeholder.com/800x600/ec4899/ffffff?text=Social+Ad+Campaign',
+            alt: 'Social Ad Campaign',
+          },
+          thumbnail: {
+            src: 'https://via.placeholder.com/400x300/ec4899/ffffff?text=Social+Ad+Campaign',
+            alt: 'Social Ad Campaign',
+          },
         },
       ]}
     >
