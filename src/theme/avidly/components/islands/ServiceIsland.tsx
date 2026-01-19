@@ -16,10 +16,21 @@ interface ServiceIslandProps {
 
 export default function ServiceIsland({ services }: ServiceIslandProps) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   
   const activeService = services[activeIndex] || services[0];
   const imageSrc = activeService?.image?.src || 'https://via.placeholder.com/800x600/6366f1/ffffff?text=Service+Image';
   const imageAlt = activeService?.image?.alt || activeService?.title || 'Service';
+
+  const handleServiceHover = (index: number) => {
+    if (index !== activeIndex) {
+      setIsTransitioning(true);
+      setTimeout(() => {
+        setActiveIndex(index);
+        setIsTransitioning(false);
+      }, 150);
+    }
+  };
 
   return (
     <div className="row align-items-center">
@@ -29,8 +40,7 @@ export default function ServiceIsland({ services }: ServiceIslandProps) {
           <img
             src={imageSrc}
             alt={imageAlt}
-            className="w-100 cs_radius_15"
-            key={activeIndex}
+            className={`w-100 cs_radius_15 ${isTransitioning ? 'transitioning' : ''}`}
           />
         </div>
       </div>
@@ -45,7 +55,7 @@ export default function ServiceIsland({ services }: ServiceIslandProps) {
               <div
                 key={index}
                 className={`cs_hover_tab ${isActive ? 'active' : ''}`}
-                onMouseEnter={() => setActiveIndex(index)}
+                onMouseEnter={() => handleServiceHover(index)}
               >
                 <a 
                   href={service.link || '#'} 
