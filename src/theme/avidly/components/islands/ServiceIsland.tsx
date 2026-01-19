@@ -8,11 +8,11 @@ interface ServiceData {
     src: string;
     alt: string;
   };
-  imageHeight: number;
-  objectFit: string;
 }
 
 interface ImageStyles {
+  height: string;
+  objectFit: string;
   borderRadius: string;
   boxShadow: string;
 }
@@ -24,43 +24,35 @@ interface ServiceIslandProps {
 
 export default function ServiceIsland({ services, imageStyles }: ServiceIslandProps) {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
   
   const activeService = services[activeIndex] || services[0];
   const imageSrc = activeService?.image?.src || 'https://4911237.fs1.hubspotusercontent-na1.net/hubfs/4911237/flowerimage.jpeg';
   const imageAlt = activeService?.image?.alt || activeService?.title || 'Service';
-  const imageHeight = activeService?.imageHeight || 400;
-  const objectFit = activeService?.objectFit || 'cover';
-  
-  console.log('Active service:', activeService); // Debug log
-  console.log('Image src:', imageSrc); // Debug log
-
-  const handleServiceHover = (index: number) => {
-    if (index !== activeIndex) {
-      setIsTransitioning(true);
-      setTimeout(() => {
-        setActiveIndex(index);
-        setIsTransitioning(false);
-      }, 150);
-    }
-  };
 
   return (
-    <div className="row align-items-center">
+    <div className="row align-items-start">
       {/* Left Column - Featured Image */}
       <div className="col-12 col-lg-5 mb-4 mb-lg-0">
-        <div className="cs_service_featured_img" style={{ height: `${imageHeight}px` }}>
-          <img
-            src={imageSrc}
-            alt={imageAlt}
-            className={`w-100 ${isTransitioning ? 'transitioning' : ''}`}
-            style={{
-              height: '100%',
-              objectFit: objectFit as any,
-              borderRadius: imageStyles.borderRadius,
-              boxShadow: imageStyles.boxShadow,
-            }}
-          />
+        <div className="cs_service_featured_img">
+          <div className="cs_image_layer_in" style={{ 
+            height: imageStyles.height,
+            borderRadius: imageStyles.borderRadius,
+            overflow: 'hidden',
+          }}>
+            <img
+              src={imageSrc}
+              alt={imageAlt}
+              className="cs_service_img"
+              style={{
+                width: '100%',
+                height: imageStyles.height === 'auto' ? 'auto' : '100%',
+                objectFit: imageStyles.objectFit as any,
+                boxShadow: imageStyles.boxShadow,
+                borderRadius: imageStyles.borderRadius,
+              }}
+              key={activeIndex}
+            />
+          </div>
         </div>
       </div>
 
@@ -74,7 +66,7 @@ export default function ServiceIsland({ services, imageStyles }: ServiceIslandPr
               <div
                 key={index}
                 className={`cs_hover_tab ${isActive ? 'active' : ''}`}
-                onMouseEnter={() => handleServiceHover(index)}
+                onMouseEnter={() => setActiveIndex(index)}
               >
                 <a 
                   href={service.link || '#'} 

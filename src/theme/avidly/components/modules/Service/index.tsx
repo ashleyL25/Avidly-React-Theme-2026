@@ -54,8 +54,6 @@ export function Component({ fieldValues }) {
 
   // Prepare service data for Island
   const serviceData = services.map(service => {
-    console.log('Service data:', service); // Debug log
-    console.log('Image field:', service.image); // Debug log
     return {
       title: service.title || 'Service Title',
       subtitle: service.subtitle || 'Service description',
@@ -64,13 +62,13 @@ export function Component({ fieldValues }) {
         src: service.image?.src || 'https://4911237.fs1.hubspotusercontent-na1.net/hubfs/4911237/flowerimage.jpeg',
         alt: service.image?.alt || service.title || 'Service',
       },
-      imageHeight: service.image_height || 400,
-      objectFit: service.object_fit || 'cover',
     };
   });
 
   // Image styling from style settings
   const imageStyles = {
+    height: style.override_image_height ? `${style.image_height || 600}px` : 'auto',
+    objectFit: style.object_fit || 'cover',
     borderRadius: `${style.image_border_radius || 15}px`,
     boxShadow: style.enable_shadow
       ? `${style.shadow_x || 0}px ${style.shadow_y || 10}px ${style.shadow_blur || 40}px rgba(0, 0, 0, ${(style.shadow_opacity || 10) / 100})`
@@ -334,23 +332,6 @@ export const fields = (
           alt: 'Service thumbnail',
         }}
       />
-      <NumberField
-        name="image_height"
-        label="Image Height (px)"
-        default={400}
-        min={200}
-        max={800}
-        step={10}
-      />
-      <ChoiceField
-        name="object_fit"
-        label="Image Object Fit"
-        choices={[
-          ['cover', 'Cover (fills area, may crop)'],
-          ['contain', 'Contain (fits entire image)'],
-        ]}
-        default="cover"
-      />
     </RepeatedFieldGroup>
 
     {/* Style Group */}
@@ -456,6 +437,32 @@ export const fields = (
         min={0}
         max={200}
         step={5}
+      />
+      <BooleanField
+        name="override_image_height"
+        label="Override Image Height"
+        default={false}
+      />
+      <NumberField
+        name="image_height"
+        label="Image Height (px)"
+        default={600}
+        min={300}
+        max={1000}
+        step={10}
+        visibility={{
+          controllingField: 'override_image_height',
+          controllingValueRegex: 'true',
+        }}
+      />
+      <ChoiceField
+        name="object_fit"
+        label="Image Object Fit"
+        choices={[
+          ['cover', 'Cover (fills area, may crop)'],
+          ['contain', 'Contain (fits entire image)'],
+        ]}
+        default="cover"
       />
       <NumberField
         name="image_border_radius"
