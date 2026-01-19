@@ -55,12 +55,14 @@ export function Component({ fieldValues }) {
   // Prepare service data for Island (flatten the nested array structure)
   const serviceData = services.map(service => {
     const s = service[0] || {};
+    console.log('Service data:', s); // Debug log
+    console.log('Image field:', s.image); // Debug log
     return {
       title: s.title || 'Service Title',
       subtitle: s.subtitle || 'Service description',
       link: s.link || '#',
       image: {
-        src: s.image?.src || 'https://via.placeholder.com/800x600/6366f1/ffffff?text=Service',
+        src: s.image?.src || 'https://4911237.fs1.hubspotusercontent-na1.net/hubfs/4911237/flowerimage.jpeg',
         alt: s.image?.alt || s.title || 'Service',
       },
     };
@@ -253,11 +255,11 @@ export const fields = (
           number: '01',
           link: '#',
           image: {
-            src: 'https://via.placeholder.com/800x600/6366f1/ffffff?text=Web+Development',
+            src: 'https://4911237.fs1.hubspotusercontent-na1.net/hubfs/4911237/flowerimage.jpeg',
             alt: 'Web Development',
           },
           thumbnail: {
-            src: 'https://via.placeholder.com/400x300/6366f1/ffffff?text=Web+Development',
+            src: 'https://4911237.fs1.hubspotusercontent-na1.net/hubfs/4911237/flowerimage.jpeg',
             alt: 'Web Development',
           },
         },
@@ -267,11 +269,11 @@ export const fields = (
           number: '02',
           link: '#',
           image: {
-            src: 'https://via.placeholder.com/800x600/f59e0b/ffffff?text=UI+UX+Design',
+            src: 'https://4911237.fs1.hubspotusercontent-na1.net/hubfs/4911237/flowerimage.jpeg',
             alt: 'UI/UX Design',
           },
           thumbnail: {
-            src: 'https://via.placeholder.com/400x300/f59e0b/ffffff?text=UI+UX+Design',
+            src: 'https://4911237.fs1.hubspotusercontent-na1.net/hubfs/4911237/flowerimage.jpeg',
             alt: 'UI/UX Design',
           },
         },
@@ -281,11 +283,11 @@ export const fields = (
           number: '03',
           link: '#',
           image: {
-            src: 'https://via.placeholder.com/800x600/3b82f6/ffffff?text=Branding',
+            src: 'https://4911237.fs1.hubspotusercontent-na1.net/hubfs/4911237/flowerimage.jpeg',
             alt: 'Branding',
           },
           thumbnail: {
-            src: 'https://via.placeholder.com/400x300/3b82f6/ffffff?text=Branding',
+            src: 'https://4911237.fs1.hubspotusercontent-na1.net/hubfs/4911237/flowerimage.jpeg',
             alt: 'Branding',
           },
         },
@@ -295,11 +297,11 @@ export const fields = (
           number: '04',
           link: '#',
           image: {
-            src: 'https://via.placeholder.com/800x600/ec4899/ffffff?text=Social+Ad+Campaign',
+            src: 'https://4911237.fs1.hubspotusercontent-na1.net/hubfs/4911237/flowerimage.jpeg',
             alt: 'Social Ad Campaign',
           },
           thumbnail: {
-            src: 'https://via.placeholder.com/400x300/ec4899/ffffff?text=Social+Ad+Campaign',
+            src: 'https://4911237.fs1.hubspotusercontent-na1.net/hubfs/4911237/flowerimage.jpeg',
             alt: 'Social Ad Campaign',
           },
         },
@@ -313,7 +315,7 @@ export const fields = (
         name="image"
         label="Hover Background Image (Style 1)"
         default={{
-          src: 'https://via.placeholder.com/800x600',
+          src: 'https://4911237.fs1.hubspotusercontent-na1.net/hubfs/4911237/flowerimage.jpeg',
           alt: 'Service background',
         }}
       />
@@ -321,7 +323,7 @@ export const fields = (
         name="thumbnail"
         label="Thumbnail Image (Style 2)"
         default={{
-          src: 'https://via.placeholder.com/400x300',
+          src: 'https://4911237.fs1.hubspotusercontent-na1.net/hubfs/4911237/flowerimage.jpeg',
           alt: 'Service thumbnail',
         }}
       />

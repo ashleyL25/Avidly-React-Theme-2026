@@ -19,8 +19,11 @@ export default function ServiceIsland({ services }: ServiceIslandProps) {
   const [isTransitioning, setIsTransitioning] = useState(false);
   
   const activeService = services[activeIndex] || services[0];
-  const imageSrc = activeService?.image?.src || 'https://via.placeholder.com/800x600/6366f1/ffffff?text=Service+Image';
+  const imageSrc = activeService?.image?.src || 'https://4911237.fs1.hubspotusercontent-na1.net/hubfs/4911237/flowerimage.jpeg';
   const imageAlt = activeService?.image?.alt || activeService?.title || 'Service';
+  
+  console.log('Active service:', activeService); // Debug log
+  console.log('Image src:', imageSrc); // Debug log
 
   const handleServiceHover = (index: number) => {
     if (index !== activeIndex) {
